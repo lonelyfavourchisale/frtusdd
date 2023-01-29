@@ -8,7 +8,7 @@ var accountSid = 'AC9409d8e6d57b658546a1a78de152b163';
 var authToken  = '05aa90e3d44834c309de115e64a18f9d';
 const client = require('twilio')(accountSid, authToken);
 
-const port = process.env.PORT || 3030
+const port = process.env.PORT || 4000
 
 app.use(logger('dev'))
 app.use(bodyParser.json())
@@ -136,10 +136,6 @@ const firebaseConfig = {
 
   })
  
-  
-	app.get('*', (req, res) => {
-	res.send('This is tutorial App on creating your first USSD app in 5 minutes or less by Ajala Abdulsamii <kgasta@gmail.com>')
-	})
 	
 	app.post('*', (req, res) => {
 	let {sessionId, serviceCode, phoneNumber, text} = req.body
