@@ -93,7 +93,7 @@ const firebaseConfig = {
 
   })
 */
-  /*getting all districts from the database from the databse
+  //getting all districts from the database from the databse
   
   ref.on('value',function(snapshot){
     var dataweather =snapshot.val()
@@ -135,11 +135,7 @@ const firebaseConfig = {
     })
 
   })
- */
-  
-	app.get('*', (req, res) => {
-	res.send('This is tutorial App on creating your first USSD app in 5 minutes or less by Ajala Abdulsamii <kgasta@gmail.com>')
-	})
+ 
 	
 	app.post('*', (req, res) => {
 	let {sessionId, serviceCode, phoneNumber, text} = req.body
@@ -202,7 +198,7 @@ const firebaseConfig = {
     }
 
 
-    /* ==============================================register========================================================================================================
+    // ==============================================register========================================================================================================
     else if(text=='1*1'){
         response=`CON Select your District
         1. Salima
