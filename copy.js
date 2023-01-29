@@ -136,7 +136,9 @@ const firebaseConfig = {
 
   })
  
-	
+  app.get('*', (req, res) => {
+    console.log('hello')
+  })	
 	app.post('*', (req, res) => {
 	let {sessionId, serviceCode, phoneNumber, text} = req.body
 	

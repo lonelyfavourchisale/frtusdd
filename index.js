@@ -137,7 +137,7 @@ const firebaseConfig = {
   })
  
 	
-	app.get('*', (req, res) => {
+	app.post('*', (req, res) => {
 	let {sessionId, serviceCode, phoneNumber, text} = req.body
 	
     //creating an array of data
