@@ -32,7 +32,7 @@ const firebaseConfig = {
 	const ref = db.ref("weather")
 			//getting all districts from the database from the databse
   
-			function getdata(){
+		function getdata(){
 			ref.on('value',function(snapshot){
 				var dataweather =snapshot.val()
 				var keys = Object.keys(dataweather)
@@ -42,7 +42,7 @@ const firebaseConfig = {
 				//looping throug an array of districts
 				for (let i = 0; i < keys.length; i++) {
 				  const element = keys[i];
-				  const responsedata = ++select + ". " + element
+				  const responsedata = `${++select}  .  ${element}`
 				  districtsvariable=responsedata
 				  //displaying all available districts
 				  console.log(districtsvariable)
