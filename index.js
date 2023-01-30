@@ -1,6 +1,37 @@
 const app = require('express')()
-	const bodyParser = require('body-parser')
-	const logger = require('morgan')
+ const bodyParser = require('body-parser')
+const logger = require('morgan')
+var firebase = require('firebase')
+
+const firebaseConfig = {
+
+    apiKey: "AIzaSyCgCBxz9u9Q-IKgBZk8mlJUw2icHa0aqU4",
+  
+    authDomain: "ussd-be4c3.firebaseapp.com",
+  
+    databaseURL: "https://ussd-be4c3-default-rtdb.firebaseio.com",
+  
+    projectId: "ussd-be4c3",
+  
+    storageBucket: "ussd-be4c3.appspot.com",
+  
+    messagingSenderId: "195880245900",
+  
+    appId: "1:195880245900:web:25477a933deae90d1339a9",
+  
+    measurementId: "G-9JEGRHY1GM"
+  
+  };
+
+    //inintilizing the app 
+	firebase.initializeApp(firebaseConfig)
+
+	//getting database
+	var db=firebase.database();
+  
+	const ref = db.ref("weather")
+
+
 	
 	const port = process.env.PORT || 3030
 	
@@ -43,7 +74,29 @@ const app = require('express')()
 		
 	}
 	else if(text=='2*2'){
-		response=`END you have requested for weather menu`
+		response=`CON weather report
+		1.continue
+		2.cancel`
+	}
+	else if(text=='2*2*1'){
+		//getting all districts from the database from the databse
+  
+  ref.on('value',function(snapshot){
+    var dataweather =snapshot.val()
+    var keys = Object.keys(dataweather)
+
+    //looping throug an array of districts
+    for (let i = 0; i < keys.length; i++) {
+      const element = keys[i];
+      const responsedata = keys.indexOf(element) + ". " + element
+	  response=`CON choose district
+		${districts}`
+      //displaying all available districts
+      console.log(responsedata)
+
+    }
+})
+
 	}
 	else if(text=='3'){
             
