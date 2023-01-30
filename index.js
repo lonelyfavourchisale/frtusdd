@@ -42,7 +42,7 @@ const app = require('express')()
 		5. help`
 		
 	}
-	else if(text='2*2'){
+	else if(text=='2*2'){
 		response=`END you have requested for weather menu`
 	}
 	else if(text=='3'){
