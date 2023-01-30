@@ -32,6 +32,7 @@ const firebaseConfig = {
 	const ref = db.ref("weather")
 			//getting all districts from the database from the databse
   
+			function getdata(){
 			ref.on('value',function(snapshot){
 				var dataweather =snapshot.val()
 				var keys = Object.keys(dataweather)
@@ -48,7 +49,7 @@ const firebaseConfig = {
 			
 				}
 			})
-			
+		}
 
 
 	
@@ -93,14 +94,11 @@ const firebaseConfig = {
 		
 	}
 	else if(text=='2*2'){
-		response=`CON weather report
-		1.continue
-		2.cancel`
+		getdata()
+		response=`CON choose district for weather reports \n ${districtsvariable}`
 	}
-	else if(text=='2*2*1'){
-		response=`CON choose district ${districtsvariable}
-		`
-	}
+
+		
 	else if(text=='3'){
             
 		response=`CON choose options below for help
