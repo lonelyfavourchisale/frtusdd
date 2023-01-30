@@ -35,13 +35,16 @@ const firebaseConfig = {
 			ref.on('value',function(snapshot){
 				var dataweather =snapshot.val()
 				var keys = Object.keys(dataweather)
+				var select = 0
+				var districtsvariable=``
 			
 				//looping throug an array of districts
 				for (let i = 0; i < keys.length; i++) {
 				  const element = keys[i];
-				  const responsedata = keys.indexOf(element) + ". " + element
+				  const responsedata = ++select + ". " + element
+				  districtsvariable=responsedata
 				  //displaying all available districts
-				  console.log(responsedata)
+				  console.log(districtsvariable)
 			
 				}
 			})
@@ -95,7 +98,7 @@ const firebaseConfig = {
 		2.cancel`
 	}
 	else if(text=='2*2*1'){
-		response=`CON choose district
+		response=`CON choose district ${districtsvariable}
 		`
 	}
 	else if(text=='3'){
