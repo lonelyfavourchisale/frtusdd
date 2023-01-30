@@ -96,7 +96,7 @@ const firebaseConfig = {
 	}
 	else if(text=='2*2*1'){
 		response=`CON choose district
-		${responsedata}`
+		`
 	}
 	else if(text=='3'){
             
