@@ -89,14 +89,14 @@ const firebaseConfig = {
     for (let i = 0; i < keys.length; i++) {
       const element = keys[i];
       const responsedata = keys.indexOf(element) + ". " + element
-	  response=`CON choose district
-		${districts}`
       //displaying all available districts
       console.log(responsedata)
 
     }
 })
 
+		response=`CON choose district
+		${responsedata}`
 	}
 	else if(text=='3'){
             
