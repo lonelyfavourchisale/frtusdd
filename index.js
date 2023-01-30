@@ -23,6 +23,34 @@ const app = require('express')()
         2. Main Menu
         3. Help`;
     }
+	 //seconds
+	 else if(text=='1'){
+
+        response = `CON Welcome to Mlimi Registration services. 
+        
+        1. Start Registration
+        0. Main Menu
+        `
+
+    }
+	else if(text=='2'){
+		response=`CON Mlimi Main Manu
+		1. Advesories
+		2. Weather reports
+		3. Marketing
+		4. Account
+		5. help`
+		
+	}
+	else if(text='2*2'){
+		response=`END you have requested for weather menu`
+	}
+	else if(text=='3'){
+            
+		response=`CON choose options below for help
+		1.call center`
+	
+}
  //send the response back
  res.set('Content-Type: text/plain');
  res.send(response)
