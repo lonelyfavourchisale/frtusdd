@@ -33,12 +33,25 @@ const firebaseConfig = {
 	const ref = db.ref("weather/districts") 
 	var select = 0
 	var districtvariable=``
+	var districtname;
 
 	
 	
 
+ function getdistrictnames(){
+
+	ref.once('value',(snapshot)=>{
+		snapshot.forEach((childSnapshot) => {
+			districtname=childSnapshot.val().name
+			districtvariable=`${++select}.${districtname}`
+			console.log(districtvariable)
+		});
+		
 	
-console.log(districtvariable)
+	})
+	
+}
+
 getdistrictnames()
  
 	
@@ -84,17 +97,9 @@ getdistrictnames()
 		
 	}
 	else if(text=='2*2'){
-		ref.once('value',(snapshot)=>{
-			snapshot.forEach((childSnapshot) => {
-				districtname=childSnapshot.val().name
-				districtvariable=`${++select}.${districtname}`
-				response=`CON choose district for weather reports \n ${districtvariable}`
-			});
-			
 		
-		})
-
 		
+		response=`CON choose district for weather reports \n ${districtvariable}`
 	}
 
 		
