@@ -98,7 +98,7 @@ getdistrictnames()
 	}
 	else if(text=='2*2'){
 		
-		
+		getdistrictnames()
 		response=`CON choose district for weather reports \n ${districtvariable}`
 	}
 
