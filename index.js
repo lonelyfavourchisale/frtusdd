@@ -1,7 +1,8 @@
 const app = require('express')()
  const bodyParser = require('body-parser')
 const logger = require('morgan')
-var firebase = require('firebase')
+var firebase = require('firebase');
+const { compile } = require('morgan');
 
 const firebaseConfig = {
 
@@ -29,29 +30,18 @@ const firebaseConfig = {
 	//getting database
 	var db=firebase.database();
   
-	const ref = db.ref("weather")
-			//getting all districts from the database from the databse
-  
-		function getdata(){
-			ref.on('value',function(snapshot){
-				var dataweather =snapshot.val()
-				var keys = Object.keys(dataweather)
-				var select = 0
-				var districtsvariable=``
-			
-				//looping throug an array of districts
-				for (let i = 0; i < keys.length; i++) {
-				  const element = keys[i];
-				  const responsedata = `${++select}  .  ${element}`
-				  districtsvariable=responsedata
-				  //displaying all available districts
-				  console.log(districtsvariable)
-			
-				}
-			})
-		}
+	const ref = db.ref("weather/districts") 
+	var select = 0
+	var districtvariable=``
 
+	
+	
 
+	
+console.log(districtvariable)
+getdistrictnames()
+ 
+	
 	
 	const port = process.env.PORT || 3030
 	
@@ -94,8 +84,17 @@ const firebaseConfig = {
 		
 	}
 	else if(text=='2*2'){
-		getdata()
-		response=`CON choose district for weather reports \n ${districtsvariable}`
+		ref.once('value',(snapshot)=>{
+			snapshot.forEach((childSnapshot) => {
+				districtname=childSnapshot.val().name
+				districtvariable=`${++select}.${districtname}`
+				response=`CON choose district for weather reports \n ${districtvariable}`
+			});
+			
+		
+		})
+
+		
 	}
 
 		
