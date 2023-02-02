@@ -24,13 +24,32 @@ const firebaseConfig = {
   
   };
 
+  var getdistrictname='lonely chisalel'
     //inintilizing the app 
 	firebase.initializeApp(firebaseConfig)
 
 	//getting database
 	var db=firebase.database();
-  
-	const ref = db.ref("weather/districts") 
+	var districts=''
+  const ref = db.ref("weather/districts")
+	
+	ref.on('value',function(snapshot){
+
+		//looping throug an array of districts
+		snapshot.forEach((childSnapshot) => {
+			var districtnames=childSnapshot.val().name
+			getdistrict()
+		});
+	}
+		
+	)
+
+	function getdistrict(){
+		
+
+	}
+	
+	
 	
 	  
 
@@ -67,6 +86,7 @@ const firebaseConfig = {
         `
 
     }
+	
 	else if(text=='2'){
 		response=`CON Mlimi Main Manu
 		1. Advesories
@@ -77,8 +97,8 @@ const firebaseConfig = {
 		
 	}
 	else if(text=='2*2'){
-		var districtvariable='lonely'
-		response=`CON choose district for weather reports  ${districtvariable}`
+	
+		response=`CON choose district for weather reports  ${getdistrictname}`
 	}
 
 		
