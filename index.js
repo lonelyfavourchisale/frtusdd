@@ -38,16 +38,20 @@ const firebaseConfig = {
 		//looping throug an array of districts
 		snapshot.forEach((childSnapshot) => {
 			var districtnames=childSnapshot.val().name
-			getdistrict()
+			districts=districtnames
+			console.log(districts)
 		});
+		console.log(districts)
 	}
 		
 	)
 
-	function getdistrict(){
+	
+
+
 		
 
-	}
+	
 	
 	
 	
@@ -97,7 +101,9 @@ const firebaseConfig = {
 		
 	}
 	else if(text=='2*2'){
-	
+		
+		
+		
 		response=`CON choose district for weather reports  ${getdistrictname}`
 	}
 
