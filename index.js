@@ -95,7 +95,7 @@ app.post("*", (req, res) => {
         //ds is an arra ofcourse
         //change it to your need here
         //response should be assigned here
-        //example: response = `CON choose district for weather reports $your manipulated district response`;
+        response = `CON choose district for weather reports ${ds[1]} manipulated district response`;
         // await console.log(ds);
       });
   } else if (text == "3") {
