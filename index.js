@@ -96,7 +96,7 @@ app.post("*", (req, res) => {
         //change it to your need here
         //response should be assigned here
         response = `CON choose district for weather reports ${ds[1]} manipulated district response`;
-       await console.log(ds);
+        await console.log(ds);
       });
   } else if (text == "3") {
     response = `CON choose options below for help
