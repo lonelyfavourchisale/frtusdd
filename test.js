@@ -1,10 +1,10 @@
-var keys = ['a', 'b', 'c'];
-var vals = [];
-for(i=0; i<3; i++) {
-    client.get(keys[i], function(err, reply) {
-        console.log(reply);
-        vals.push(reply);
-    });
+var emptyarray=[]
+var names=['lonely','martha','praise','annie']
+function namess(){
+names.forEach(element => {
+    emptyarray.push(element)
+   
+});
 }
-console.log(vals);
-
+namess()
+console.log(emptyarray)

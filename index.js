@@ -30,22 +30,20 @@ const firebaseConfig = {
 
 	//getting database
 	var db=firebase.database();
-	var districts=''
+	var districts=[]
   const ref = db.ref("weather/districts")
 	
 	ref.on('value',function(snapshot){
-
 		//looping throug an array of districts
 		snapshot.forEach((childSnapshot) => {
 			var districtnames=childSnapshot.val().name
-			districts=districtnames
-			console.log(districts)
+			districts.push(districtnames)
 		});
-		console.log(districts)
-	}
 		
-	)
+	})
+	console.log(districts)
 
+	
 	
 
 
