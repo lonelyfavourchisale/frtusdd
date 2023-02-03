@@ -29,13 +29,13 @@ firebase.initializeApp(firebaseConfig);
 var db = firebase.database();
 var districts = [];
 const ref = db.ref("weather/districts");
-/*
+
 const handleDistrictResponse = (districtsArray) => {
   let dt = [];
   districtsArray.forEach((ds, index) => dt.push(`${index}. ${ds}`));
   return dt;
 };
-*/
+
 // ref.on("value", async (snapshot) => {
 //   let dis = [];
 
@@ -81,7 +81,7 @@ app.post("*", (req, res) => {
 		4. Account
 		5. help`;
   } else if (text == "2*2") {
-   /* ref
+    ref
       .once("value")
       .then(async (snapshot) => {
         let ds = [];
@@ -95,14 +95,10 @@ app.post("*", (req, res) => {
         //ds is an arra ofcourse
         //change it to your need here
         //response should be assigned here
-        
+        response = `CON choose district for weather report manipulated district response`;
         await console.log(ds);
       });
-      
-    */
-      response = `CON choose district for weather reports `;
-   
-    } else if (text == "3") {
+  } else if (text == "3") {
     response = `CON choose options below for help
 		1.call center`;
   }
