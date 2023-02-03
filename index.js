@@ -30,17 +30,11 @@ var db = firebase.database();
 var districts = [];
 const ref = db.ref("weather/districts");
 
-
-console.log('before data loading')
-ref.on('value',(snapshot)=>{
-console.log('load data')
-})
-console.log('after loading data')
-
-
-
-
-
+console.log("before data loading");
+ref.on("value", (snapshot) => {
+  console.log("load data");
+});
+console.log("after loading data");
 
 /*
 const handleDistrictResponse = (districtsArray) => {
@@ -95,7 +89,7 @@ app.post("*", (req, res) => {
 		4. Account
 		5. help`;
   } else if (text == "2*2") {
-   /* ref
+    /* ref
       .once("value")
       .then(async (snapshot) => {
         let ds = [];
@@ -112,19 +106,18 @@ app.post("*", (req, res) => {
        
         await console.log(ds);
       });*/
-function responses(){
-  ref.on('value',(snapshot)=>{
-    snapshot.forEach((childSnapshot)=> {
-      var selector=0
-      var datadistrict=`${++selector}.${childSnapshot.val().name}`
-      console.log(datadistrict)
-      response = `CON choose district for weather \n ${datadistrict}`;
-      
-    });
-  })
-      
-}
-responses()
+    function responses() {
+      ref.on("value", (snapshot) => {
+        let districts = [];
+        snapshot.forEach((childSnapshot) => {
+          var selector = 0;
+          var datadistrict = `${++selector}.${childSnapshot.val().name}`;
+          districts.push(datadistrict);
+        });
+        response = `CON choose district for weather \n ${districts.toString()}`;
+      });
+    }
+    responses();
   } else if (text == "3") {
     response = `CON choose options below for help
 		1.call center`;
