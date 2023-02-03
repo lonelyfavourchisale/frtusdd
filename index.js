@@ -36,6 +36,8 @@ ref.on("value", (snapshot) => {
 });
 console.log("after loading data");
 
+
+
 /*
 const handleDistrictResponse = (districtsArray) => {
   let dt = [];
