@@ -113,7 +113,14 @@ app.post("*", (req, res) => {
         await console.log(ds);
       });*/
 function responses(){
-      response = `CON choose district for weather report manipulated district response`;
+  ref.on('value',(snapshot)=>{
+    snapshot.forEach((childSnapshot)=> {
+      var datadistrict=childSnapshot.val()
+      response = `CON choose district for weather ${datadistrict}`;
+      
+    });
+  })
+      
 }
 responses()
   } else if (text == "3") {
