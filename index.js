@@ -118,7 +118,7 @@ function responses(){
       var selector=0
       var datadistrict=`${++selector}.${childSnapshot.val().name}`
       console.log(datadistrict)
-      response = `CON choose district for weather ${datadistrict}`;
+      response = `CON choose district for weather \n ${datadistrict}`;
       
     });
   })
