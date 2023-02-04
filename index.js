@@ -116,7 +116,7 @@ app.post("*", (req, res) => {
           datadistrict=``
           var datadistrict = `${++selector}.${childSnapshot.val().name}`;
           districts.push(datadistrict);
-          response = `CON choose district for weather \n ${districts}`;
+          response = `CON choose district for weather \n ${datadistrict}`;
         });
         
       });
