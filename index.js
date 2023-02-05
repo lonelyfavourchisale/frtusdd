@@ -95,15 +95,15 @@ app.post("*", (req, res) => {
   } 
   
 else if(dataarray[1]=='2' && dataarray[2]!=''){
-response=`CON choose weather information category \n
-1.actions
-2.expected
-3.weakly weather`
+response=`CON choose weather information category \n 
+          1.actions
+          2.expected
+          3.weakily weather`
   }
 
-  else if(dataarray[1]=='2' && dataarray[2]!='' && dataarray[3]=='1'){
-    response=`CON dispay actions`
-  }
+else if(dataarray[1]=='2' && dataarray[2]!='' && dataarray[3]=='1'){
+  response=`CON action menu`
+}
   
  /* else if(dataarray[1]=='2' && dataarray[2]!='' && dataarray[3]=='1'){
     function getactions(){
@@ -135,7 +135,7 @@ response=`CON choose weather information category \n
   }
   //send the response back
   res.set("Content-Type: text/plain");
-  res.send(response);
+   res.send(response);
 });
 
 app.listen(port, () => {
