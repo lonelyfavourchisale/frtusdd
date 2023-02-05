@@ -31,6 +31,7 @@ const ref = db.ref("weather/districts");
 
 
 
+
 const port = process.env.PORT || 3030;
 
 app.use(logger("dev"));
@@ -75,19 +76,19 @@ app.post("*", (req, res) => {
     function responses() {
       ref.on("value", (snapshot) => {
         let districts = [];
-        snapshot.forEach((childSnapshot) => {
-          datadistrict = ``;
-          var datadistrict = `${childSnapshot.val().name}`;
+        console.log(snapshot.val())
+        snapshot.forEach(element => {
+          var datadistrict = element.val().name;
           districts.push(datadistrict);
         });
-
+    
         const indexDistricts = districts.map(
           (ds, index) => `${index + 1}. ${ds}\n`
         );
-
+    
         const spliting=indexDistricts.toString().split(',')
         const joiingdistricts=spliting.join('\n')
-
+    
         response = `CON choose district for weather \n ${joiingdistricts}`;
         
       });
@@ -191,7 +192,7 @@ function weeklyweather(){
     response=`END weekly weather report for ${title} \n 
     maximum temperature is : ${maxtemp} \n
     minimum temperature is : ${mintemp}
-    weather status is : ${status}`
+    status is: ${status}`
   })
 }
 weeklyweather()
