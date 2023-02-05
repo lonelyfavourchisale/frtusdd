@@ -73,7 +73,7 @@ app.post("*", (req, res) => {
 		4. Account
 		5. help`;
   } else if (text == "2*2") {
-    function responses() {
+    function gettingDistricts() {
       ref.on("value", (snapshot) => {
         let districts = [];
         var selector=0
@@ -89,7 +89,7 @@ app.post("*", (req, res) => {
         
       });
     }
-    responses();
+    gettingDistricts();
   } 
   
 else if(dataarray[1]=='2' && dataarraysize==3){
