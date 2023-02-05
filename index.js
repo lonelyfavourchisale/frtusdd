@@ -101,7 +101,7 @@ response=`CON choose weather information category \n
 3.weakly weather`
   }
 
-  else if(dataarray[1]=='2' && dataarray[2]!='' && dataarray[3]=='1'){
+  else if(dataarray[1]=='2' && dataarray[3]=='1'){
     response=`CON dispay actions`
   }
   
