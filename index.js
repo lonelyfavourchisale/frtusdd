@@ -167,7 +167,7 @@ response=`CON choose weather information category \n
         var expectedarray=[]
         var selector=0
         var districtname=snapshot.val().name
-        expecteds=snapshot.val().actions
+        expecteds=snapshot.val().expected
     
         expecteds.forEach(element => {
           var allexpecteds=++selector + '.' + element
