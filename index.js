@@ -102,11 +102,7 @@ response=`CON choose weather information category \n
           3.weakily weather`
   }
 
-else if(text=='2*2*1*1'){
-  response=`CON action menu`
-}
-  
- /* else if(dataarray[1]=='2' && dataarray[2]!='' && dataarray[3]=='1'){
+   else if(text=='2*2*1*1'){
     function getactions(){
       var index='/8';
       const actionsref=ref.child(index)
@@ -129,7 +125,7 @@ else if(text=='2*2*1*1'){
     }
     getactions()
   }
-*/
+
   else if (text == "3") {
     response = `CON choose options below for help
 		1.call center`;
