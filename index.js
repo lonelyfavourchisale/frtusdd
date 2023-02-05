@@ -118,7 +118,7 @@ app.post("*", (req, res) => {
         });
 
         const indexDistricts = districts.map(
-          (ds, index) => `${index + 1}. ${ds}`
+          (ds, index) => `${index + 1}. ${ds}\n`
         );
 
         response = `CON choose district for weather \n ${indexDistricts.toString()}`;
