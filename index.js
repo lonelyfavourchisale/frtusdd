@@ -113,7 +113,7 @@ app.post("*", (req, res) => {
         let districts = [];
         snapshot.forEach((childSnapshot, index) => {
           datadistrict = ``;
-          var datadistrict = `${index + 1}.${childSnapshot.val().name}`;
+          var datadistrict = `${index}.${childSnapshot.val().name}`;
           districts.push(datadistrict);
         });
         response = `CON choose district for weather \n ${districts.toString()}`;
