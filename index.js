@@ -95,14 +95,14 @@ app.post("*", (req, res) => {
     responses();
   } 
   
-else if(text=='2*2*1'){
+else if(dataarray[1]=='2' && dataarraysize==3){
 response=`CON choose weather information category \n 
           1.actions
           2.expected
           3.weakily weather`
   }
 
-   else if(text=='2*2*1*1'){
+   else if(dataarray[1]=='2' && dataarraysize==4 && dataarray[3]==1){
     function getactions(){
       var index='/8';
       const actionsref=ref.child(index)
@@ -132,7 +132,7 @@ response=`CON choose weather information category \n
   
   }
 
-  else if(text=='2*2*1*2'){
+  else if(dataarray[1]=='2' && dataarraysize==4 && dataarray[3]==2){
     function getexpected(){
       var index='/8';
       const actionsref=ref.child(index)
@@ -161,7 +161,7 @@ response=`CON choose weather information category \n
     getexpected() 
   }
 
- else if(text=='2*2*1*3'){
+ else if(dataarray[1]=='2' && dataarraysize==4 && dataarray[3]==3){
     
 function weeklyweather(){
   var index='/8';
