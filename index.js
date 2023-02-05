@@ -93,7 +93,7 @@ app.post("*", (req, res) => {
     responses();
   } 
   
-  else if(dataarray[2]=='2' && dataarray[3]!=''){
+  else if(dataarray[1]=='2' && dataarray[2]!=''){
 response=`CON choose weather information category \n
 1.actions
 2.expected
