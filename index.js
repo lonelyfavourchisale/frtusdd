@@ -161,11 +161,22 @@ response=`CON choose weather information category \n
     getexpected() 
   }
 
- else if(dataarray[1]=='2' && dataarraysize==4 && dataarray[3]==3){
+  else if(dataarray[1]=='2' && dataarraysize==4 && dataarray[3]==3){
+    response=`CON choose day of the week \n
+    1.Monday
+    2.Tuesday
+    3.Wednesday
+    4.Thursday
+    5.Friday
+    6.Saturday
+    7.Sunday`
+  }
+
+ else if(dataarray[1]=='2' && dataarraysize==5){
     
 function weeklyweather(){
   var index = `/${--dataarray[2]}`;
-  var tempindex='/1'
+  var tempindex=`/${--dataarray[4]}`
   const actionsref=ref.child(index + '/weeklyTemps' + tempindex)
 
   
