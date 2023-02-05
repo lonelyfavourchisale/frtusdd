@@ -89,19 +89,20 @@ app.post("*", (req, res) => {
         const joiingdistricts=spliting.join('\n')
 
         response = `CON choose district for weather \n ${joiingdistricts}`;
+        
       });
     }
     responses();
   } 
   
-else if(dataarray[1]=='2' && dataarray[2]!=''){
+else if(text=='2*2*1'){
 response=`CON choose weather information category \n 
           1.actions
           2.expected
           3.weakily weather`
   }
 
-else if(dataarray[1]=='2' && dataarray[2]!='' && dataarray[3]=='1'){
+else if(text=='2*2*1*1'){
   response=`CON action menu`
 }
   
