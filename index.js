@@ -100,25 +100,25 @@ response=`CON choose weather information category \n
 2.expected
 3.weakly weather`
   }
-  else if(dataarray[1]=='2' && dataarray[2]!='' && dataarray[3]=='1'){
+  else if(dataarray[1]=='2' && dataarray[3]=='1'){
     function getactions(){
       var index='/8';
       const actionsref=ref.child(index)
     
       
-      actionsref.child('/actions').on("value",(snapshot)=>{
+      actionsref.on("value",(snapshot)=>{
         var actions=[]
         var selector=0
-    
+        var districtname=snapshot.val.name
         snapshot.forEach(element => {
-        actions.push(++selector + '.' + element.val())
+        actions.push(++selector + '.' + element.val().actions)
         });
         //conerting an array to sting
         var arraytostring=actions.toString()
         var splitactions=arraytostring.split(',')
         var spacedaction=splitactions.join('\n')
     
-        response=`CON actions \n ${spacedaction}`
+        response=`CON actions for ${districtname} district \n ${spacedaction}`
       })
     }
     getactions()
