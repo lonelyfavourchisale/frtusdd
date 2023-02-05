@@ -111,12 +111,17 @@ app.post("*", (req, res) => {
     function responses() {
       ref.on("value", (snapshot) => {
         let districts = [];
-        snapshot.forEach((childSnapshot, index) => {
+        snapshot.forEach((childSnapshot) => {
           datadistrict = ``;
-          var datadistrict = `${index}.${childSnapshot.val().name}`;
+          var datadistrict = `${childSnapshot.val().name}`;
           districts.push(datadistrict);
         });
-        response = `CON choose district for weather \n ${districts.toString()}`;
+
+        const indexDistricts = districts.map(
+          (ds, index) => `${index + 1}. ${ds}`
+        );
+
+        response = `CON choose district for weather \n ${indexDistricts.toString()}`;
       });
     }
     responses();
