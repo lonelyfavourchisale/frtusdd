@@ -29,12 +29,14 @@ firebase.initializeApp(firebaseConfig);
 var db = firebase.database();
 var districts = [];
 const ref = db.ref("weather/districts");
-
-console.log("before data loading");
+var selector = 0;
 ref.on("value", (snapshot) => {
-  console.log("load data");
+  snapshot.forEach((childSnapshot) => {
+    datadistrict;
+    var datadistrict = ++selector + childSnapshot.val().name;
+    console.log(datadistrict);
+  });
 });
-console.log("after loading data");
 
 /*
 const handleDistrictResponse = (districtsArray) => {
@@ -110,6 +112,7 @@ app.post("*", (req, res) => {
       ref.on("value", (snapshot) => {
         let districts = [];
         snapshot.forEach((childSnapshot, index) => {
+          datadistrict = ``;
           var datadistrict = `${index + 1}.${childSnapshot.val().name}`;
           districts.push(datadistrict);
         });
