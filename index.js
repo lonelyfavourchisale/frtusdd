@@ -27,34 +27,8 @@ firebase.initializeApp(firebaseConfig);
 
 //getting database
 var db = firebase.database();
-var districts = [];
 const ref = db.ref("weather/districts");
-var selector = 0;
-ref.on("value", (snapshot) => {
-  snapshot.forEach((childSnapshot) => {
-    datadistrict;
-    var datadistrict = ++selector + childSnapshot.val().name;
-    console.log(datadistrict);
-  });
-});
 
-/*
-const handleDistrictResponse = (districtsArray) => {
-  let dt = [];
-  districtsArray.forEach((ds, index) => dt.push(`${index}. ${ds}`));
-  return dt;
-};
-*/
-
-// ref.on("value", async (snapshot) => {
-//   let dis = [];
-
-//   //   console.log(snapshot);
-//   snapshot.forEach((childSnapshot) => {
-//     dis.push(childSnapshot.val().name);
-//   });
-//   return {};
-// });
 
 const port = process.env.PORT || 3030;
 
@@ -68,6 +42,12 @@ app.get("*", (req, res) => {
 
 app.post("*", (req, res) => {
   let { sessionId, serviceCode, phoneNumber, text, response } = req.body;
+
+   //creating an array of data
+   let dataarray=text.split('*');
+
+   //array length
+   let dataarraysize=dataarray.length
   //first
   if (text == "") {
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~First request for the FRT main menu~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -91,23 +71,6 @@ app.post("*", (req, res) => {
 		4. Account
 		5. help`;
   } else if (text == "2*2") {
-    /* ref
-      .once("value")
-      .then(async (snapshot) => {
-        let ds = [];
-        await snapshot.forEach((childSnapshot) => {
-          ds.push(childSnapshot.val().name);
-        });
-        return ds;
-      })
-      .then(async (ds) => {
-        //access to your districts here
-        //ds is an arra ofcourse
-        //change it to your need here
-        //response should be assigned here
-       
-        await console.log(ds);
-      });*/
     function responses() {
       ref.on("value", (snapshot) => {
         let districts = [];
@@ -128,7 +91,16 @@ app.post("*", (req, res) => {
       });
     }
     responses();
-  } else if (text == "3") {
+  } 
+  
+  else if(dataarray[2]=='2' && dataarray[3]!=''){
+response=`CON choose weather information category \n
+1.actions
+2.expected
+3.weakly weather`
+  }
+
+  else if (text == "3") {
     response = `CON choose options below for help
 		1.call center`;
   }
