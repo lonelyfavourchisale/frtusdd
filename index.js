@@ -29,32 +29,7 @@ firebase.initializeApp(firebaseConfig);
 var db = firebase.database();
 const ref = db.ref("weather/districts");
 
-function getactions(){
-  var index='/8';
-  const actionsref=ref.child(index)
 
-  
-  actionsref.on("value",(snapshot)=>{
-    var actionsarray=[]
-    var selector=0
-    var districtname=snapshot.val().name
-    actions=snapshot.val().actions
-
-    actions.forEach(element => {
-      var allactions=++selector + '.' + element
-      actionsarray.push(allactions)
-      
-    });
-    
-    //conerting an array to sting
-    var arraytostring=actionsarray.toString()
-    var splitactions=arraytostring.split(',')
-    var spacedaction=splitactions.join('\n')
-
-    response=`CON actions for ${districtname} district \n ${spacedaction}`
-  })
-}
-getactions()
 
 const port = process.env.PORT || 3030;
 
@@ -180,12 +155,43 @@ response=`CON choose weather information category \n
         var splitexpecteds=arraytostring.split(',')
         var spaceExpecteds=splitexpecteds.join('\n')
     
-        response=`END actions for ${districtname} district \n ${spaceExpecteds}`
+        response=`END expectetions for ${districtname} district \n ${spaceExpecteds}`
       })
     }
     getexpected() 
   }
 
+  else if(text=='2*2*1*3'){
+    
+function weeklyweather(){
+  var index='/8';
+  var tempindex='/1'
+  const actionsref=ref.child(index + '/weeklyTemps' + tempindex)
+
+  
+  actionsref.on("value",(snapshot)=>{
+    var selector=0
+    
+    var title=snapshot.val().title
+      var maxtemp=snapshot.val().max
+      var mintemp=snapshot.val().min
+      var status=snapshot.val().status
+    
+      console.log('maximum temperature is :' + ' ' + maxtemp)
+      console.log('minimum temperature is :' + ' ' + mintemp)
+      console.log('weather status is :' + ' ' + status)
+      
+  
+
+    response=`CON weekly weather report for ${title} \n 
+    maximum temperature is : ${maxtemp} \n
+    minimum temperature is : ${mintemp}
+    weather status is : ${status}`
+  })
+}
+weeklyweather()
+
+  }
   else if (text == "3") {
     response = `CON choose options below for help
 		1.call center`;
