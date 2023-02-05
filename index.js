@@ -104,7 +104,7 @@ response=`CON choose weather information category \n
 
    else if(dataarray[1]=='2' && dataarraysize==4 && dataarray[3]==1){
     function getactions(){
-      var index=`${dataarray[2]}`;
+      var index=`/${dataarray[2]}`;
       const actionsref=ref.child(index)
     
       
@@ -134,7 +134,7 @@ response=`CON choose weather information category \n
 
   else if(dataarray[1]=='2' && dataarraysize==4 && dataarray[3]==2){
     function getexpected(){
-      var index=`${dataarray[2]}`;
+      var index=`/${dataarray[2]}`;
       const actionsref=ref.child(index)
     
       
@@ -164,7 +164,7 @@ response=`CON choose weather information category \n
  else if(dataarray[1]=='2' && dataarraysize==4 && dataarray[3]==3){
     
 function weeklyweather(){
-  var index=`${dataarray[2]}`;
+  var index=`/${dataarray[2]}`;
   var tempindex='/1'
   const actionsref=ref.child(index + '/weeklyTemps' + tempindex)
 
