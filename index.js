@@ -30,6 +30,7 @@ var db = firebase.database();
 const ref = db.ref("weather/districts");
 
 
+
 const port = process.env.PORT || 3030;
 
 app.use(logger("dev"));
@@ -98,6 +99,29 @@ response=`CON choose weather information category \n
 1.actions
 2.expected
 3.weakly weather`
+  }
+  else if(dataarray[1]=='2' && dataarray[2]!='' && dataarray[3]=='1'){
+    function getactions(){
+      var index='/8';
+      const actionsref=ref.child(index)
+    
+      
+      actionsref.child('/actions').on("value",(snapshot)=>{
+        var actions=[]
+        var selector=0
+    
+        snapshot.forEach(element => {
+        actions.push(++selector + '.' + element.val())
+        });
+        //conerting an array to sting
+        var arraytostring=actions.toString()
+        var splitactions=arraytostring.split(',')
+        var spacedaction=splitactions.join('\n')
+    
+        response=`CON actions \n ${spacedaction}`
+      })
+    }
+    getactions()
   }
 
   else if (text == "3") {
