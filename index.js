@@ -29,7 +29,32 @@ firebase.initializeApp(firebaseConfig);
 var db = firebase.database();
 const ref = db.ref("weather/districts");
 
+function getactions(){
+  var index='/8';
+  const actionsref=ref.child(index)
 
+  
+  actionsref.on("value",(snapshot)=>{
+    var actionsarray=[]
+    var selector=0
+    var districtname=snapshot.val().name
+    actions=snapshot.val().actions
+
+    actions.forEach(element => {
+      var allactions=++selector + '.' + element
+      actionsarray.push(allactions)
+      
+    });
+    
+    //conerting an array to sting
+    var arraytostring=actionsarray.toString()
+    var splitactions=arraytostring.split(',')
+    var spacedaction=splitactions.join('\n')
+
+    response=`CON actions for ${districtname} district \n ${spacedaction}`
+  })
+}
+getactions()
 
 const port = process.env.PORT || 3030;
 
@@ -109,21 +134,27 @@ response=`CON choose weather information category \n
     
       
       actionsref.on("value",(snapshot)=>{
-        var actions=[]
+        var actionsarray=[]
         var selector=0
-        var districtname=snapshot.val.name
-        snapshot.forEach(element => {
-        actions.push(++selector + '.' + element.val().actions)
+        var districtname=snapshot.val().name
+        actions=snapshot.val().actions
+    
+        actions.forEach(element => {
+          var allactions=++selector + '.' + element
+          actionsarray.push(allactions)
+          
         });
+        
         //conerting an array to sting
-        var arraytostring=actions.toString()
+        var arraytostring=actionsarray.toString()
         var splitactions=arraytostring.split(',')
         var spacedaction=splitactions.join('\n')
     
         response=`CON actions for ${districtname} district \n ${spacedaction}`
       })
     }
-    getactions()
+    getactions() 
+  
   }
 
   else if (text == "3") {
