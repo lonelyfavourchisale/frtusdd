@@ -150,11 +150,40 @@ response=`CON choose weather information category \n
         var splitactions=arraytostring.split(',')
         var spacedaction=splitactions.join('\n')
     
-        response=`CON actions for ${districtname} district \n ${spacedaction}`
+        response=`END actions for ${districtname} district \n ${spacedaction}`
       })
     }
     getactions() 
   
+  }
+
+  else if(text=='2*2*1*2'){
+    function getexpected(){
+      var index='/8';
+      const actionsref=ref.child(index)
+    
+      
+      actionsref.on("value",(snapshot)=>{
+        var expectedarray=[]
+        var selector=0
+        var districtname=snapshot.val().name
+        expecteds=snapshot.val().actions
+    
+        expecteds.forEach(element => {
+          var allexpecteds=++selector + '.' + element
+          expectedarray.push(allexpecteds)
+          
+        });
+        
+        //conerting an array to sting
+        var arraytostring=expectedarray.toString()
+        var splitexpecteds=arraytostring.split(',')
+        var spaceExpecteds=splitexpecteds.join('\n')
+    
+        response=`END actions for ${districtname} district \n ${spaceExpecteds}`
+      })
+    }
+    getexpected() 
   }
 
   else if (text == "3") {
