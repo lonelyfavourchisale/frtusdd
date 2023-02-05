@@ -161,7 +161,7 @@ response=`CON choose weather information category \n
     getexpected() 
   }
 
-  else if(text=='2*2*1*3'){
+ else if(text=='2*2*1*3'){
     
 function weeklyweather(){
   var index='/8';
@@ -176,12 +176,6 @@ function weeklyweather(){
       var maxtemp=snapshot.val().max
       var mintemp=snapshot.val().min
       var status=snapshot.val().status
-    
-      console.log('maximum temperature is :' + ' ' + maxtemp)
-      console.log('minimum temperature is :' + ' ' + mintemp)
-      console.log('weather status is :' + ' ' + status)
-      
-  
 
     response=`CON weekly weather report for ${title} \n 
     maximum temperature is : ${maxtemp} \n
