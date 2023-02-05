@@ -94,13 +94,18 @@ app.post("*", (req, res) => {
     responses();
   } 
   
-  else if(dataarray[1]=='2' && dataarray[2]!=''){
+else if(dataarray[1]=='2' && dataarray[2]!=''){
 response=`CON choose weather information category \n
 1.actions
 2.expected
 3.weakly weather`
   }
-  else if(dataarray[1]=='2' && dataarray[3]=='1'){
+
+  else if(dataarray[1]=='2' && dataarray[2]!='' && dataarray[3]=='1'){
+    response=`CON dispay actions`
+  }
+  
+ /* else if(dataarray[1]=='2' && dataarray[2]!='' && dataarray[3]=='1'){
     function getactions(){
       var index='/8';
       const actionsref=ref.child(index)
@@ -123,7 +128,7 @@ response=`CON choose weather information category \n
     }
     getactions()
   }
-
+*/
   else if (text == "3") {
     response = `CON choose options below for help
 		1.call center`;
