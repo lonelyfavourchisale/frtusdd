@@ -121,7 +121,10 @@ app.post("*", (req, res) => {
           (ds, index) => `${index + 1}. ${ds}\n`
         );
 
-        response = `CON choose district for weather \n ${indexDistricts.toString()}`;
+        const spliting=indexDistricts.toString().split(',')
+        const joiingdistricts=spliting.join('\n')
+
+        response = `CON choose district for weather \n ${joiingdistricts}`;
       });
     }
     responses();
