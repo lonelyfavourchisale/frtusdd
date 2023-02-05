@@ -76,17 +76,13 @@ app.post("*", (req, res) => {
     function responses() {
       ref.on("value", (snapshot) => {
         let districts = [];
+        var selector=0
         console.log(snapshot.val())
         snapshot.forEach(element => {
-          var datadistrict = element.val().name;
+          var datadistrict =++selector+ '.'+ element.val().name;
           districts.push(datadistrict);
         });
-    
-        const indexDistricts = districts.map(
-          (ds, index) => `${index + 1}. ${ds}\n`
-        );
-    
-        const spliting=indexDistricts.toString().split(',')
+        const spliting=districts.toString().split(',')
         const joiingdistricts=spliting.join('\n')
     
         response = `CON choose district for weather \n ${joiingdistricts}`;
