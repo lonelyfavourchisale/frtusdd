@@ -87,7 +87,8 @@ app.post("*", (req, res) => {
         const spliting=indexDistricts.toString().split(',')
         const joiingdistricts=spliting.join('\n')
     
-        response = `CON choose district for weather \n ${joiingdistricts}`;
+        response = `CON choose district for weather \n
+                     ${joiingdistricts}`;
         
       });
     }
