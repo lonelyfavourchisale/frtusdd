@@ -74,6 +74,7 @@ app.post("*", (req, res) => {
   }
   //working on weather menu
   else if (text == "2*2") {
+
      async function disp() {
       await promise();
     }
@@ -208,7 +209,7 @@ function weeklyweather(){
     var titlestatusSpace=titilestatussplit.join('\n')
 
 
-    response=`END weekly weather reports \n DAYS  MAX  MIN \n${titlesmaxmintemppace}\n\nWeather status for specific days\n${titlestatusSpace}
+    response=`END WEEKLY WEATHER REPORTS \n Days  Max  Min \n${titlesmaxmintemppace}\n\nWeather Status For Specific Days\n${titlestatusSpace}
     `
   })
 }
