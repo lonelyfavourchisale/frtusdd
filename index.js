@@ -31,6 +31,40 @@ var db = firebase.database();
 const ref = db.ref("weather/districts");
 
 
+async function disp() {
+  await promise();
+}
+
+function promise() {
+  return new Promise((resolve, reject) => {
+    ref.on("value", (snapshot) => {
+      let districts = [];
+      snapshot.forEach(element => {
+        var datadistrict =element.val().name;
+        districts.push(datadistrict);
+      });
+  
+      const indexDistricts = districts.map(
+        (ds, index) => `${index + 1}. ${ds}`
+      );
+  
+      const spliting=indexDistricts.toString().split(',')
+      const joiingdistricts=spliting.join('\n')
+  
+     var response = `CON choose district for weather \n${joiingdistricts}`;
+                   console.log(response)
+      
+    });
+  
+    
+
+
+  });
+}
+
+disp();
+
+
 const port = process.env.PORT || 3030;
 
 app.use(logger("dev"));
@@ -95,32 +129,41 @@ app.post("*", (req, res) => {
      getdistricts();
      */
 
-
-     function getdistricts() {
-      ref.on("value", (snapshot) => {
-        let districts = [];
-        snapshot.forEach(element => {
-          var datadistrict =element.val().name;
-          districts.push(datadistrict);
+     async function disp() {
+      await promise();
+    }
+    
+    function promise() {
+      return new Promise((resolve, reject) => {
+        ref.on("value", (snapshot) => {
+          let districts = [];
+          snapshot.forEach(element => {
+            var datadistrict =element.val().name;
+            districts.push(datadistrict);
+          });
+      
+          const indexDistricts = districts.map(
+            (ds, index) => `${index + 1}. ${ds}`
+          );
+      
+          const spliting=indexDistricts.toString().split(',')
+          const joiingdistricts=spliting.join('\n')
+      
+         var response = `CON choose district for weather \n${joiingdistricts}`;
+                       console.log(response)
+          
         });
-    
-        const indexDistricts = districts.map(
-          (ds, index) => `${index + 1}. ${ds}`
-        );
-    
-        const spliting=indexDistricts.toString().split(',')
-        const joiingdistricts=spliting.join('\n')
-    
-        response = `CON choose district for weather \n${joiingdistricts}`;
+      
         
+    
+    
       });
     }
-     getdistricts().then(response=>{
-      response = `CON choose district for weather \n
-                     ${joiingdistricts}`;
-     });
-     
-  } 
+    
+    disp();
+    
+
+    } 
   
 else if(dataarray[1]=='2' && dataarraysize==3){
 response=`CON choose weather information category \n 
