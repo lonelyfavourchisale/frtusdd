@@ -112,10 +112,10 @@ app.post("*", (req, res) => {
     } 
   
 else if(dataarray[1]=='2' && dataarraysize==3){
-response=`CON choose weather information category \n 
-          1.actions
-          2.expected
-          3.weakily weather`
+response=`CON choose weather information 
+ 1.actions
+ 2.expected
+ 3.weakily weather`
   }
 
    else if(dataarray[1]=='2' && dataarraysize==4 && dataarray[3]==1){
@@ -225,7 +225,7 @@ else if(text=='2*3'){
 }
 
 else if(text=='2*3*1'){
-  response=`CON choose farm product name
+  response=`CON choose product price per kg
   1. Maize, MK220
   2. Rice Polished, MK700
   3. Rice Unpolished, MK300
