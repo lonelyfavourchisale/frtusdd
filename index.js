@@ -194,7 +194,7 @@ function weeklyweather(){
     var titlestatusSpace=titilestatussplit.join('\n')
 
 
-    response=`END weekly weather report for distict chosen \n${titlesmaxmintemppace} \n\n${titlestatusSpace}
+    response=`END weekly weather report for distict chosen \n DAYS  MAX  MIN \n${titlesmaxmintemppace}\n\nWeather status for specific days\n${titlestatusSpace}
     `
   })
 }
