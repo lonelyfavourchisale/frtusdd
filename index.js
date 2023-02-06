@@ -72,7 +72,7 @@ app.post("*", (req, res) => {
 		4. Account
 		5. help`;
   } else if (text == "2*2") {
-    /* function getdistricts() {
+     function getdistricts() {
       ref.on("value", (snapshot) => {
         let districts = [];
         snapshot.forEach(element => {
@@ -92,27 +92,6 @@ app.post("*", (req, res) => {
       });
     }
      getdistricts();
-     */
-    function getd(){
-     ref
-      .once("value")
-      .then(async (snapshot) => {
-        let ds = [];
-        await snapshot.forEach((childSnapshot) => {
-          ds.push(childSnapshot.val().name);
-        });
-        return ds;
-      })
-      .then(async (ds) => {
-        //access to your districts here
-        //ds is an arra ofcourse
-        //change it to your need here
-        //response should be assigned here
-        response = `CON choose district for weather reports ${ds} manipulated district response`;
-        await console.log(ds);
-      });
-    }
-    getd()
   } 
   
 else if(dataarray[1]=='2' && dataarraysize==3){
