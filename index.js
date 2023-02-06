@@ -173,7 +173,7 @@ function weeklyweather(){
     var titlemaxmintemparray=[]
     var titlestatusarray=[]
     snapshot.forEach(element => {
-      var titlemaxmintemp=element.val().title + ' : ' + element.val().max + ' ' + element.val().min
+      var titlemaxmintemp=element.val().title + '  :  ' + element.val().max + '   ' + element.val().min
       var titlestatus=element.val().title + ' : ' + element.val().status
 
       //pushing data to specific arrays
