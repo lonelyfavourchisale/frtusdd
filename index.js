@@ -72,7 +72,7 @@ app.post("*", (req, res) => {
 		4. Account
 		5. help`;
   } else if (text == "2*2") {
-    function getdistricts() {
+   /* function getdistricts() {
       ref.on("value", (snapshot) => {
         let districts = [];
         snapshot.forEach(element => {
@@ -93,6 +93,33 @@ app.post("*", (req, res) => {
       });
     }
      getdistricts();
+     */
+
+
+     function getdistricts() {
+      ref.on("value", (snapshot) => {
+        let districts = [];
+        snapshot.forEach(element => {
+          var datadistrict =element.val().name;
+          districts.push(datadistrict);
+        });
+    
+        const indexDistricts = districts.map(
+          (ds, index) => `${index + 1}. ${ds}`
+        );
+    
+        const spliting=indexDistricts.toString().split(',')
+        const joiingdistricts=spliting.join('\n')
+    
+        response = `CON choose district for weather \n${joiingdistricts}`;
+        
+      });
+    }
+     getdistricts().then(response=>{
+      response = `CON choose district for weather \n
+                     ${joiingdistricts}`;
+     });
+     
   } 
   
 else if(dataarray[1]=='2' && dataarraysize==3){
