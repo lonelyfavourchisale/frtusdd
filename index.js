@@ -79,7 +79,7 @@ app.post("*", (req, res) => {
         var selector=0
         console.log(snapshot.val())
         snapshot.forEach(element => {
-          var datadistrict =++selector+ '.'+ element.val().name;
+          var datadistrict =element.val().name;
           districts.push(datadistrict);
         });
     
