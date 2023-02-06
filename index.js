@@ -31,9 +31,6 @@ var db = firebase.database();
 const ref = db.ref("weather/districts");
 
 
-
-
-
 const port = process.env.PORT || 3030;
 
 app.use(logger("dev"));
@@ -90,18 +87,12 @@ app.post("*", (req, res) => {
         const spliting=indexDistricts.toString().split(',')
         const joiingdistricts=spliting.join('\n')
     
-        async function myDisplay() {
-          let myPromise = new Promise(function(resolve, reject) {
-            resolve(`CON choose district for weather \n${joiingdistricts}`);
-          });
-          response = await myPromise;
-        }
-        myDisplay();
-      
+        response = `CON choose district for weather \n ${joiingdistricts}`;
         
       });
     }
-     getdistricts(); } 
+     getdistricts();
+  } 
   
 else if(dataarray[1]=='2' && dataarraysize==3){
 response=`CON choose weather information category \n 
