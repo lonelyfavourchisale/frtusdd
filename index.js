@@ -2,6 +2,7 @@ const app = require("express")();
 const bodyParser = require("body-parser");
 const logger = require("morgan");
 var firebase = require("firebase");
+const { response } = require("express");
 
 const firebaseConfig = {
   apiKey: "AIzaSyCgCBxz9u9Q-IKgBZk8mlJUw2icHa0aqU4",
@@ -28,8 +29,6 @@ firebase.initializeApp(firebaseConfig);
 //getting database
 var db = firebase.database();
 const ref = db.ref("weather/districts");
-
-
 
 
 const port = process.env.PORT || 3030;
@@ -164,41 +163,46 @@ response=`CON choose weather information category \n
   }
 
   else if(dataarray[1]=='2' && dataarraysize==4 && dataarray[3]==3){
-    response=`CON choose day of the week \n
-    1.Monday
-    2.Tuesday
-    3.Wednesday
-    4.Thursday
-    5.Friday
-    6.Saturday
-    7.Sunday`
-  }
-
- else if(dataarray[1]=='2' && dataarraysize==5){
-    
+   
 function weeklyweather(){
-  var index = `/${--dataarray[2]}`;
-  var tempindex=`/${--dataarray[4]}`
-  const actionsref=ref.child(index + '/weeklyTemps' + tempindex)
+  var index = `/0`;
+  const actionsref=ref.child(index + '/weeklyTemps')
 
   
   actionsref.on("value",(snapshot)=>{
-    var selector=0
-    
-    var title=snapshot.val().title
-      var maxtemp=snapshot.val().max
-      var mintemp=snapshot.val().min
-      var status=snapshot.val().status
+    var titlemaxmintemparray=[]
+    var titlestatusarray=[]
+    snapshot.forEach(element => {
+      var titlemaxmintemp=element.val().title + ' : ' + element.val().max + ' ' + element.val().min
+      var titlestatus=element.val().title + ' : ' + element.val().status
 
-    response=`END weekly weather report for ${title} \n 
-    maximum temperature is : ${maxtemp} \n
-    minimum temperature is : ${mintemp}
-    status is: ${status}`
+      //pushing data to specific arrays
+      titlemaxmintemparray.push(titlemaxmintemp)
+      titlestatusarray.push(titlestatus)
+    });
+
+    //changing an array to string
+    var titlemaxmintempstring=titlemaxmintemparray.toString()
+    var titlestatusstring=titlestatusarray.toString()
+
+    //splinting data
+    var titlemaxmintempsplit=titlemaxmintempstring.split(',')
+    var titilestatussplit=titlestatusstring.split(',')
+
+    //adding next spaces
+    var titlesmaxmintemppace=titlemaxmintempsplit.join('\n')
+    var titlestatusSpace=titilestatussplit.join('\n')
+
+
+    response=`END weekly weather report \n
+    ${titlesmaxmintemppace} \n\n
+    ${titlestatusSpace}
+    `
   })
 }
 weeklyweather()
+}
 
-  }
   else if (text == "3") {
     response = `CON choose options below for help
 		1.call center`;
