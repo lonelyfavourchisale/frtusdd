@@ -165,7 +165,7 @@ response=`CON choose weather information category \n
   else if(dataarray[1]=='2' && dataarraysize==4 && dataarray[3]==3){
    
 function weeklyweather(){
-  var index = `/0`;
+  var index = `/${--dataarray[2]}`;
   const actionsref=ref.child(index + '/weeklyTemps')
 
   
@@ -194,9 +194,7 @@ function weeklyweather(){
     var titlestatusSpace=titilestatussplit.join('\n')
 
 
-    response=`END weekly weather report \n
-    ${titlesmaxmintemppace} \n\n
-    ${titlestatusSpace}
+    response=`END weekly weather report for distict chosen \n${titlesmaxmintemppace} \n\n${titlestatusSpace}
     `
   })
 }
