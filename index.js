@@ -31,40 +31,6 @@ var db = firebase.database();
 const ref = db.ref("weather/districts");
 
 
-async function disp() {
-  await promise();
-}
-
-function promise() {
-  return new Promise((resolve, reject) => {
-    ref.on("value", (snapshot) => {
-      let districts = [];
-      snapshot.forEach(element => {
-        var datadistrict =element.val().name;
-        districts.push(datadistrict);
-      });
-  
-      const indexDistricts = districts.map(
-        (ds, index) => `${index + 1}. ${ds}`
-      );
-  
-      const spliting=indexDistricts.toString().split(',')
-      const joiingdistricts=spliting.join('\n')
-  
-     var response = `CON choose district for weather \n${joiingdistricts}`;
-                   console.log(response)
-      
-    });
-  
-    
-
-
-  });
-}
-
-disp();
-
-
 const port = process.env.PORT || 3030;
 
 app.use(logger("dev"));
@@ -105,30 +71,9 @@ app.post("*", (req, res) => {
 		3. Marketing
 		4. Account
 		5. help`;
-  } else if (text == "2*2") {
-   /* function getdistricts() {
-      ref.on("value", (snapshot) => {
-        let districts = [];
-        snapshot.forEach(element => {
-          var datadistrict =element.val().name;
-          districts.push(datadistrict);
-        });
-    
-        const indexDistricts = districts.map(
-          (ds, index) => `${index + 1}. ${ds}`
-        );
-    
-        const spliting=indexDistricts.toString().split(',')
-        const joiingdistricts=spliting.join('\n')
-    
-        response = `CON choose district for weather \n
-                     ${joiingdistricts}`;
-        
-      });
-    }
-     getdistricts();
-     */
-
+  }
+  //working on weather menu
+  else if (text == "2*2") {
      async function disp() {
       await promise();
     }
@@ -263,13 +208,51 @@ function weeklyweather(){
     var titlestatusSpace=titilestatussplit.join('\n')
 
 
-    response=`END weekly weather report for distict chosen \n DAYS  MAX  MIN \n${titlesmaxmintemppace}\n\nWeather status for specific days\n${titlestatusSpace}
+    response=`END weekly weather reports \n DAYS  MAX  MIN \n${titlesmaxmintemppace}\n\nWeather status for specific days\n${titlestatusSpace}
     `
   })
 }
 weeklyweather()
 }
 
+//working on market menu
+else if(text=='2*3'){
+  response=`CON MLIMI Market
+  1. Minimum Farm Gate Prices
+  2. Sell Products
+  3. Buy Available Products `
+}
+
+else if(text=='2*3*1'){
+  response=`CON choose farm product name
+  1. Maize, MK220
+  2. Rice Polished, MK700
+  3. Rice Unpolished, MK300
+  4. Sorghum, MK360
+  5. Finger Millet, MK480
+  6. Soya Beans, MK480
+  7. Pure Beans, MK480
+  8. White Harricot Beans, MK500
+  0.exit`
+}
+
+else if(text=='2*3*2'){
+  response=`CON choose product to sell
+  1.Maize
+  2.Soya bean
+  3.Rice
+  4.Beans`
+}
+
+else if(text=='2*3*2*1'){
+  response=`CON enter quantity(kg) of farm product`
+}
+
+
+  
+
+
+//working on help menu
   else if (text == "3") {
     response = `CON choose options below for help
 		1.call center`;
