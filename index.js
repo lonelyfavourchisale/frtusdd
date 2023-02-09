@@ -300,6 +300,9 @@ else if(text=='2*3*2*1'){
     response = `CON choose options below for help
 		1.call center`;
   }
+  else if(text=="3*1"){
+    response=`END contact for free on *8111# AIRTEL or *7111# TNM `
+  }
   //send the response back
   res.set("Content-Type: text/plain");
    res.send(response);
