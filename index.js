@@ -72,6 +72,48 @@ app.post("*", (req, res) => {
 		4. Account
 		5. help`;
   }
+
+  //working on advesories
+  else if(text=="2*1"){
+    
+    async function disp() {
+      await promise();
+    }
+    
+    function promise() {
+      return new Promise((resolve, reject) => {
+        ref.on("value", (snapshot) => {
+          let districts = [];
+          snapshot.forEach(element => {
+            var datadistrict =element.val().name;
+            districts.push(datadistrict);
+          });
+      
+          const indexDistricts = districts.map(
+            (ds, index) => `${index + 1}. ${ds}`
+          );
+      
+          const spliting=indexDistricts.toString().split(',')
+          const joiingdistricts=spliting.join('\n')
+      
+          response = `CON choose district for weather \n${joiingdistricts}`;
+                       console.log(response)
+          
+        });
+      
+        
+    
+    
+      });
+    }
+    
+    disp();
+    
+
+    } 
+  
+
+  
   //working on weather menu
   else if (text == "2*2") {
 
