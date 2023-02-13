@@ -47,9 +47,17 @@ const regiintialize =firebase.initializeApp(registrationconfig,'registration')
 const regdb=regiintialize.database()
 
 const regref = regdb.ref("sectors")
-const newregref = regdb.ref("users")
+const newregref = regdb.ref("users/users")
 
-
+newregref.on('value',(snapshot)=>{
+  console.log(snapshot.val().translated_languge)
+  if (snapshot.val().translated_languge=='chichewa') {
+    console.log('the languge is chichewa')
+  }
+  else{
+   console.log('the language is english')
+  }
+})
 
 
 
@@ -362,13 +370,10 @@ else if(text=='2*3*2*1'){
 
   //changing language
   else if(text=='4'){
-    async function languagetranslator(message,translateto){
-      translateto.engine ='libre'
-      const translatedstring = await translator(message,translateto)
-      console.log(translatedstring)
-      
-  }
-  languagetranslator(response,'chichewa')
+    newregref.update({
+      translated_languge:'chichewa'
+    });
+    
 response='END language successfully changed to chichewa'
   }
   
