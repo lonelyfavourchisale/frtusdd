@@ -1,8 +1,11 @@
+const translator = require('translate');
 const app = require("express")();
 const bodyParser = require("body-parser");
 const logger = require("morgan");
 var firebase = require("firebase");
 const { response } = require("express");
+
+//firebase configuration for weather db
 
 const firebaseConfig = {
   apiKey: "AIzaSyCgCBxz9u9Q-IKgBZk8mlJUw2icHa0aqU4",
@@ -55,7 +58,9 @@ app.post("*", (req, res) => {
     response = `CON Welcome to Farm Radio Trust
         1. Register
         2. Main Menu
-        3. Help`;
+        3. Help
+        4.change language`;
+        
   }
   //seconds
   else if (text == "1") {
@@ -303,6 +308,19 @@ else if(text=='2*3*2*1'){
   else if(text=="3*1"){
     response=`END contact for free on *8111# AIRTEL or *7111# TNM `
   }
+
+  //changing language
+  else if(text=='4'){
+    async function languagetranslator(message,translateto){
+      translateto.engine ='libre'
+      const translatedstring = await translator(message,translateto)
+      console.log(translatedstring)
+      
+  }
+  languagetranslator(response,'chichewa')
+
+  }
+  response='END language successfully changed to chichewa'
   //send the response back
   res.set("Content-Type: text/plain");
    res.send(response);
