@@ -78,6 +78,9 @@ app.post("*", (req, res) => {
 
    //creating an array of data
    let dataarray=text.split('*');
+   let name
+   let suname
+   let language
 
    //array length
    let dataarraysize=dataarray.length
@@ -106,23 +109,24 @@ app.post("*", (req, res) => {
   else if(dataarray[2]!='' && dataarraysize==3 && dataarray[0]=='1'){
     response=`CON enter surname`
   }
-  else if(dataarray[3]!='' && dataarray==4 && dataarray[0]=='1'){
+
+ else if(dataarray[3]!='' && dataarray==4 && dataarray[0]=='1'){
     
 function registration(){
-  let name=dataarray[1];
-    let suname=dataarray[2]
-    let language='English'
-    newregref.set({
-  userdetails:{
-    username: name,
-    full_name:suname,
-    languagetranslated:language
-  }
+  name=dataarray[2];
+  suname=dataarray[3]
+  language='English'
+  newregref.set({
+    userdetails:{
+     username: name,
+     full_name:suname,
+     languagetranslated:language
+    }
   });
 }
 registration()
 response=`END you have susccessfully registered`
-  }
+}
   
   else if (text == "2") {
     response = `CON Mlimi Main Manu
