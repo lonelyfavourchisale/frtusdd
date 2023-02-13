@@ -103,10 +103,10 @@ app.post("*", (req, res) => {
   else if(text=='1*1'){
     response=`CON enter your name`
   }
-  else if(dataarray[1]!='0' && dataarraysize==2 && dataarray[0]=='1'){
+  else if(dataarray[2]!='0' && dataarraysize==3 && dataarray[0]=='1'){
     response=`CON enter surname`
   }
-  else if(dataarray[2]!='0' && dataarray==3 && dataarray[0]=='1'){
+  else if(dataarray[3]!='0' && dataarray==4 && dataarray[0]=='1'){
     let name=dataarray[1];
     let suname=dataarray[2]
     let language='English'
@@ -148,7 +148,7 @@ app.post("*", (req, res) => {
           const spliting=crops.toString().split(',')
           const joiingcrops=spliting.join('\n')
       
-          response = `CON choose district for weather \n${joiingcrops}`;
+          response = `CON choose advisory category \n${joiingcrops}`;
         })
        
       });
