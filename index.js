@@ -111,7 +111,7 @@ app.post("*", (req, res) => {
   }
 
  else if(dataarray[3]!='' && dataarray==4 && dataarray[0]=='1'){
-    
+  /*  
 function registration(){
   name=dataarray[2];
   suname=dataarray[3]
@@ -124,7 +124,7 @@ function registration(){
     }
   });
 }
-registration()
+registration()*/
 response=`END you have susccessfully registered`
 }
   
