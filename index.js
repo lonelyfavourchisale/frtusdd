@@ -110,6 +110,22 @@ app.post("*", (req, res) => {
     response=`CON enter surname`
   }
 else if(dataarray[3]!='' && dataarraysize==4 && dataarray[0]=='1'){
+  function registration(){
+    name=dataarray[2]
+    suname=dataarray[3]
+    language='English'
+
+    newregref.set({
+      users: {
+        first_name: name,
+        last_name: suname,
+        translated_languge:language
+      }
+    });
+    
+    
+  }
+  registration()
   response = `END you have successfully registered`
 }
   
