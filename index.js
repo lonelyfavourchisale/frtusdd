@@ -25,6 +25,35 @@ const firebaseConfig = {
   measurementId: "G-9JEGRHY1GM",
 };
 
+const registrationconfig = {
+  apiKey: "AIzaSyBTSs9vQ39HhpH8Y4HR4X3OjkoO0BTv5ew",
+
+  authDomain: "formdata-f4646.firebaseapp.com",
+
+  databaseURL: "https://formdata-f4646-default-rtdb.firebaseio.com",
+
+  projectId: "formdata-f4646",
+
+  storageBucket: "formdata-f4646.appspot.com",
+
+  messagingSenderId: "564962263653",
+
+  appId: "1:564962263653:web:5e74ecce556368bf9f7c8c"
+
+};
+
+const regiintialize =firebase.initializeApp(registrationconfig,'registration') 
+
+const regdb=regiintialize.database()
+
+const regref = regdb.ref("sectors")
+const newregref = regdb.ref("users")
+
+
+
+
+
+
 var getdistrictname = "lonely chisalel";
 //inintilizing the app
 firebase.initializeApp(firebaseConfig);
@@ -69,7 +98,29 @@ app.post("*", (req, res) => {
         1. Start Registration
         0. Main Menu
         `;
-  } else if (text == "2") {
+  } 
+  
+  else if(text=='1*1'){
+    response=`CON enter your name`
+  }
+  else if(dataarray[1]!='0' && dataarraysize==2 && dataarray[0]=='1'){
+    response=`CON enter surname`
+  }
+  else if(dataarray[2]!='0' && dataarray==3 && dataarray[0]=='1'){
+    let name=dataarray[1];
+    let suname=dataarray[2]
+    let language='English'
+
+    newregref.set({
+  userdetails:{
+    username: name,
+    full_name:suname,
+    languagetranslated:language
+  }
+});
+  }
+  
+  else if (text == "2") {
     response = `CON Mlimi Main Manu
 		1. Advesories
 		2. Weather reports
@@ -87,28 +138,19 @@ app.post("*", (req, res) => {
     
     function promise() {
       return new Promise((resolve, reject) => {
-        ref.on("value", (snapshot) => {
-          let districts = [];
+        regref.on('value',(snapshot)=>{
+          const crops =[]
+          const selector = 0
           snapshot.forEach(element => {
-            var datadistrict =element.val().name;
-            districts.push(datadistrict);
+            var cropname =++selector + element.val().name
+            crops.push(cropname);
           });
+          const spliting=crops.toString().split(',')
+          const joiingcrops=spliting.join('\n')
       
-          const indexDistricts = districts.map(
-            (ds, index) => `${index + 1}. ${ds}`
-          );
-      
-          const spliting=indexDistricts.toString().split(',')
-          const joiingdistricts=spliting.join('\n')
-      
-          response = `CON choose district for weather \n${joiingdistricts}`;
-                       console.log(response)
-          
-        });
-      
-        
-    
-    
+          response = `CON choose district for weather \n${joiingcrops}`;
+        })
+       
       });
     }
     
@@ -318,7 +360,7 @@ else if(text=='2*3*2*1'){
       
   }
   languagetranslator(response,'chichewa')
-  response='END language successfully changed to chichewa'
+response='END language successfully changed to chichewa'
   }
   
   //send the response back
