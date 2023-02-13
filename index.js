@@ -118,6 +118,7 @@ app.post("*", (req, res) => {
     languagetranslated:language
   }
 });
+response=`END you have susccessfully registered`
   }
   
   else if (text == "2") {
