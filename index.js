@@ -49,15 +49,7 @@ const regdb=regiintialize.database()
 const regref = regdb.ref("sectors")
 const newregref = regdb.ref("users/users")
 
-newregref.on('value',(snapshot)=>{
-  console.log(snapshot.val().translated_languge)
-  if (snapshot.val().translated_languge=='chichewa') {
-    console.log('the languge is chichewa')
-  }
-  else{
-   console.log('the language is english')
-  }
-})
+
 
 
 
@@ -90,6 +82,7 @@ app.post("*", (req, res) => {
    let suname
    let language
 
+   
    //array length
    let dataarraysize=dataarray.length
   //first
@@ -387,6 +380,27 @@ response=`CON Choose your preffered language
     response =`END you have successfully switched to chichewa languge`
   }
   
+
+  //condition for changing languages
+  newregref.on('value',(snapshot)=>{
+    console.log(snapshot.val().translated_languge)
+    if (snapshot.val().translated_languge=='chichewa') {
+      async function languagetranslator(message,translateto){
+        translateto.engine ='libre'
+        const translatedstring = await translator(message,translateto)
+        console.log(translatedstring)
+    }
+    languagetranslator(response,'chichewa')
+    }
+    else{
+      async function languagetranslator(message,translateto){
+        translateto.engine ='libre'
+        const translatedstring = await translator(message,translateto)
+        console.log(translatedstring)
+    }
+    languagetranslator(response,'english')
+    }
+  })
   //send the response back
   res.set("Content-Type: text/plain");
    res.send(response);
