@@ -318,9 +318,9 @@ else if(text=='2*3*2*1'){
       
   }
   languagetranslator(response,'chichewa')
-
-  }
   response='END language successfully changed to chichewa'
+  }
+  
   //send the response back
   res.set("Content-Type: text/plain");
    res.send(response);

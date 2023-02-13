@@ -4,4 +4,4 @@ async function languagetranslator(message,translateto){
     const translatedstring = await translator(message,translateto)
     console.log(translatedstring)
 }
-languagetranslator('language translation done','chichewa')
+languagetranslator('programming is fun','chichewa')
