@@ -370,11 +370,21 @@ else if(text=='2*3*2*1'){
 
   //changing language
   else if(text=='4'){
+response=`CON Choose your preffered language
+1.english
+2.chichewa`
+  }
+  else if(text=='4*1'){
+    newregref.update({
+      translated_languge:'English'
+    });
+    response =`END you have successfully switched to english languge`
+  }
+  else if(text=='4*2'){
     newregref.update({
       translated_languge:'chichewa'
     });
-    
-response='END language successfully changed to chichewa'
+    response =`END you have successfully switched to chichewa languge`
   }
   
   //send the response back
