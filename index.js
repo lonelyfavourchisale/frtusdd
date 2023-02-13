@@ -103,10 +103,10 @@ app.post("*", (req, res) => {
   else if(text=='1*1'){
     response=`CON enter your name`
   }
-  else if(dataarray[2]!='0' && dataarraysize==3 && dataarray[0]=='1'){
+  else if(dataarray[2]!='' && dataarraysize==3 && dataarray[0]=='1'){
     response=`CON enter surname`
   }
-  else if(dataarray[3]!='0' && dataarray==4 && dataarray[0]=='1'){
+  else if(dataarray[3]!='' && dataarray==4 && dataarray[0]=='1'){
     let name=dataarray[1];
     let suname=dataarray[2]
     let language='English'
