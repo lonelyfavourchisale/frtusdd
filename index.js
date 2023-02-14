@@ -76,7 +76,26 @@ app.get("*", (req, res) => {
 app.post("*", (req, res) => {
   let { sessionId, serviceCode, phoneNumber, text, response } = req.body;
 
-  
+  //condition for changing languages
+  newregref.on('value',(snapshot)=>{
+    console.log(snapshot.val().translated_languge)
+    if (snapshot.val().translated_languge=='chichewa') {
+      async function languagetranslator(message,translateto){
+        translateto.engine ='libre'
+        const translatedstring = await translator(message,translateto)
+        console.log(translatedstring)
+    }
+    languagetranslator(response,'chichewa')
+    }
+    else{
+      async function languagetranslator(message,translateto){
+        translateto.engine ='libre'
+        const translatedstring = await translator(message,translateto)
+        console.log(translatedstring)
+    }
+    languagetranslator(response,'english')
+    }
+  })
 
    //creating an array of data
    let dataarray=text.split('*');
@@ -95,13 +114,15 @@ app.post("*", (req, res) => {
         2. Main Menu
         3. Help
         4.change language`;
-        //condition for changing languages
+        
+  //condition for changing languages
   newregref.on('value',(snapshot)=>{
     console.log(snapshot.val().translated_languge)
     if (snapshot.val().translated_languge=='chichewa') {
       async function languagetranslator(message,translateto){
         translateto.engine ='libre'
         const translatedstring = await translator(message,translateto)
+        console.log(translatedstring)
     }
     languagetranslator(response,'chichewa')
     }
@@ -109,10 +130,12 @@ app.post("*", (req, res) => {
       async function languagetranslator(message,translateto){
         translateto.engine ='libre'
         const translatedstring = await translator(message,translateto)
+        console.log(translatedstring)
     }
     languagetranslator(response,'english')
     }
   })
+
         
   }
   //seconds
