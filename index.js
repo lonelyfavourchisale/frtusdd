@@ -125,6 +125,7 @@ changelanguage()
         2. Main Menu
         3. Help
         4.change language`;
+        changelanguage()
         
   //condition for changing languages
   newregref.on('value',(snapshot)=>{
@@ -156,10 +157,12 @@ changelanguage()
         1. Start Registration
         0. Main Menu
         `;
+        changelanguage()
   } 
   
   else if(text=='1*1'){
     response=`CON enter your name`
+    changelanguage()
   }
   else if(dataarray[2]!='' && dataarraysize==3 && dataarray[0]=='1'){
     response=`CON enter surname`
