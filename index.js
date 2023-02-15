@@ -156,7 +156,11 @@ async function languagetranslator(message,translateto){
         response = await translator(message,translateto)
         console.log(translatedstring)
     }
-    languagetranslator(respon,'chichewa')
+    languagetranslator(`CON Welcome to Farm Radio Trust
+    1. Register
+    2. Main Menu
+    3. Help
+    4.change language`,'chichewa')
          
   }
   //seconds
