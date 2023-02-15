@@ -426,7 +426,7 @@ response=`CON Choose your preffered language
       newregref.child(phoneNumber).on('value',(snapshot)=>{
         if(snapshot.val().phonenumber==phoneNumber){
           newregref.child(phone).update({
-            translated_languge:'Chichewa'
+            translated_languge:'english'
           });
         }
       })
@@ -439,7 +439,7 @@ response=`CON Choose your preffered language
       newregref.child(phoneNumber).on('value',(snapshot)=>{
         if(snapshot.val().phonenumber==phoneNumber){
           newregref.child(phone).update({
-            translated_languge:'english'
+            translated_languge:'chichewa'
           });
         }
       })
