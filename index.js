@@ -46,15 +46,21 @@ const regiintialize =firebase.initializeApp(registrationconfig,'registration')
 
 const regdb=regiintialize.database()
 
+let phone=`0998865364`
 const regref = regdb.ref("sectors")
-const newregref = regdb.ref("users/users")
+const newregref = regdb.ref("users" )
 
-
-
+    
+/*
+    newregref.child(phoneNumber).on('value',(snapshot)=>{
+      console.log(snapshot.val().phonenumber)
+    })
+    */
 
 
 
 var getdistrictname = "lonely chisalel";
+console.log(`${getdistrictname}`)
 //inintilizing the app
 firebase.initializeApp(firebaseConfig);
 
@@ -156,16 +162,16 @@ app.post("*", (req, res) => {
 else if(dataarray[3]!='' && dataarraysize==4 && dataarray[0]=='1'){
   function registration(){
     name=dataarray[2]
-    suname=dataarray[3]
+    surname=dataarray[3]
     language='English'
 
-    newregref.set({
-      users: {
-        first_name: name,
-        last_name: suname,
-        translated_languge:language
-      }
-    });
+    newregref.child(phoneNumber).set({
+      first_name: name,
+      last_name: surname,
+      translated_languge:language,
+      phonenumber:phoneNumber
+      
+  });
     
     
   }
@@ -411,7 +417,7 @@ response=`CON Choose your preffered language
 2.chichewa`
   }
   else if(text=='4*1'){
-    newregref.update({
+    newregref.child(phoneNumber).update({
       translated_languge:'English'
     });
     response =`END you have successfully switched to english languge`
