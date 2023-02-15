@@ -66,21 +66,6 @@ var db = firebase.database();
 const ref = db.ref("weather/districts");
 
 
-//condition for changing languages
-async function languagetranslator(message,translateto){
-  var NNNN
-translateto.engine ='libre'
-const respons = await translator(message,translateto)
-NNNN=`${respons}`
-console.log(NNNN)
-}
-languagetranslator(`CON Welcome to Farm Radio Trust
-1. Register
-2. Main Menu
-3. Help
-4.change language`,'chichewa')
-
-
 const port = process.env.PORT || 3030;
 
 app.use(logger("dev"));
@@ -99,46 +84,7 @@ app.post("*", (req, res) => {
    let surname
    let language
 
-   
-   /*
-function changelanguage(){
-  //condition for changing languages
-  newregref.child(phoneNumber).on('value',(snapshot)=>{
   
-    if((snapshot.val().translated_languge)='chichewa'){
-      async function languagetranslator(message,translateto){
-        translateto.engine ='libre'
-        const translatedstring = await translator(message,translateto)
-        console.log(translatedstring)
-    }
-    languagetranslator(response,'chichewa')
-    }
-    else{
-      async function languagetranslator(message,translateto){
-        translateto.engine ='libre'
-        const translatedstring = await translator(message,translateto)
-        console.log(translatedstring)
-    }
-    languagetranslator(response,'english')
-    }
-    
-  })
-
-
-}
-changelanguage()
-
-*/
-
-//condition for changing languages
-async function languagetranslator(message,translateto){
-  translateto.engine ='libre'
-  const translatedstring = await translator(message,translateto)
-  console.log(translatedstring)
-  }
-  languagetranslator(response,'chichewa')
-
-
 
 
    //array length
@@ -146,21 +92,12 @@ async function languagetranslator(message,translateto){
   //first
   if (text == "") {
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~First request for the FRT main menu~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  
-        
-  //condition for changing languages
-      async function languagetranslator(message,translateto){
-        translateto.engine ='libre'
-        var translatedstring = await translator(message,translateto)
-        console.log(translatedstring)
-        response = `CON  ${translatedstring}`
-    }
-    languagetranslator(` Welcome to Farm Radio Trust
-    1. Register
-    2. Main Menu
-    3. Help
-    4.change language`,'chichewa')
-         
+  response=`CON Welcome to Farm Radio Trust
+  1. Register
+  2. Main Menu
+  3. Help
+  4.change language`
+            
   }
   //seconds
   else if (text == "1") {
@@ -169,12 +106,10 @@ async function languagetranslator(message,translateto){
         1. Start Registration
         0. Main Menu
         `;
-        changelanguage()
   } 
   
   else if(text=='1*1'){
     response=`CON enter your name`
-    changelanguage()
   }
   else if(dataarray[2]!='' && dataarraysize==3 && dataarray[0]=='1'){
     response=`CON enter surname`
