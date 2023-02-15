@@ -124,31 +124,16 @@ changelanguage()
         1. Register
         2. Main Menu
         3. Help
-        4.change language`;
-        changelanguage()
+        4.change language`
         
   //condition for changing languages
-  newregref.on('value',(snapshot)=>{
-    console.log(snapshot.val().translated_languge)
-    if (snapshot.val().translated_languge=='chichewa') {
       async function languagetranslator(message,translateto){
         translateto.engine ='libre'
         const translatedstring = await translator(message,translateto)
         console.log(translatedstring)
     }
     languagetranslator(response,'chichewa')
-    }
-    else{
-      async function languagetranslator(message,translateto){
-        translateto.engine ='libre'
-        const translatedstring = await translator(message,translateto)
-        console.log(translatedstring)
-    }
-    languagetranslator(response,'english')
-    }
-  })
-
-        
+         
   }
   //seconds
   else if (text == "1") {
