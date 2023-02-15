@@ -92,11 +92,12 @@ app.post("*", (req, res) => {
   //first
   if (text == "") {
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~First request for the FRT main menu~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  response=`CON Welcome to Farm Radio Trust
+  var respons=`Welcome to Farm Radio Trust
   1. Register
   2. Main Menu
   3. Help
   4.change language`
+  response = `CON ${respons}`
             
   }
   //seconds
