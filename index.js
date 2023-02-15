@@ -97,7 +97,14 @@ app.post("*", (req, res) => {
   2. Main Menu
   3. Help
   4.change language`
-  response = `CON ${respons}`
+  async function languagetranslator(message,translateto){
+    translateto.engine ='libre'
+    const translatedstring = await translator(message,translateto)
+    console.log(translatedstring)
+    response = `CON ${respons}`
+}
+languagetranslator(respons,'chichewa')
+  
             
   }
   //seconds
