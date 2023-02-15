@@ -46,18 +46,15 @@ const regiintialize =firebase.initializeApp(registrationconfig,'registration')
 
 const regdb=regiintialize.database()
 
-let phone=`0998865364`
+let phone=`+265995536312`
 const regref = regdb.ref("sectors")
 const newregref = regdb.ref("users" )
 
     
-/*
-    newregref.child(phoneNumber).on('value',(snapshot)=>{
-      console.log(snapshot.val().phonenumber)
-    })
-    */
 
-
+    
+    
+    
 
 var getdistrictname = "lonely chisalel";
 console.log(`${getdistrictname}`)
@@ -81,11 +78,19 @@ app.get("*", (req, res) => {
 
 app.post("*", (req, res) => {
   let { sessionId, serviceCode, phoneNumber, text, response } = req.body;
+   //creating an array of data
+   let dataarray=text.split('*');
+   let name
+   let suname
+   let language
 
+   
+   
+function changelanguage(){
   //condition for changing languages
-  newregref.on('value',(snapshot)=>{
-    console.log(snapshot.val().translated_languge)
-    if (snapshot.val().translated_languge=='chichewa') {
+  newregref.child(phoneNumber).on('value',(snapshot)=>{
+  
+    if((snapshot.val().translated_languge)='chichewa'){
       async function languagetranslator(message,translateto){
         translateto.engine ='libre'
         const translatedstring = await translator(message,translateto)
@@ -101,15 +106,15 @@ app.post("*", (req, res) => {
     }
     languagetranslator(response,'english')
     }
+    
   })
 
-   //creating an array of data
-   let dataarray=text.split('*');
-   let name
-   let suname
-   let language
 
-   
+}
+changelanguage()
+
+
+
    //array length
    let dataarraysize=dataarray.length
   //first
@@ -417,15 +422,29 @@ response=`CON Choose your preffered language
 2.chichewa`
   }
   else if(text=='4*1'){
-    newregref.child(phoneNumber).update({
-      translated_languge:'English'
-    });
+    function update(){
+      newregref.child(phoneNumber).on('value',(snapshot)=>{
+        if(snapshot.val().phonenumber==phoneNumber){
+          newregref.child(phone).update({
+            translated_languge:'Chichewa'
+          });
+        }
+      })
+    }
+    update()
     response =`END you have successfully switched to english languge`
   }
   else if(text=='4*2'){
-    newregref.update({
-      translated_languge:'chichewa'
-    });
+    function update(){
+      newregref.child(phoneNumber).on('value',(snapshot)=>{
+        if(snapshot.val().phonenumber==phoneNumber){
+          newregref.child(phone).update({
+            translated_languge:'english'
+          });
+        }
+      })
+    }
+    update()
     response =`END you have successfully switched to chichewa languge`
   }
   
