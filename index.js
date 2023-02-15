@@ -65,6 +65,20 @@ firebase.initializeApp(firebaseConfig);
 var db = firebase.database();
 const ref = db.ref("weather/districts");
 
+var respons = `CON Welcome to Farm Radio Trust
+1. Register
+2. Main Menu
+3. Help
+4.change language`
+
+//condition for changing languages
+async function languagetranslator(message,translateto){
+translateto.engine ='libre'
+const translatedstring = await translator(message,translateto)
+console.log(translatedstring)
+}
+languagetranslator(respons,'chichewa')
+
 
 const port = process.env.PORT || 3030;
 
@@ -85,7 +99,7 @@ app.post("*", (req, res) => {
    let language
 
    
-   
+   /*
 function changelanguage(){
   //condition for changing languages
   newregref.child(phoneNumber).on('value',(snapshot)=>{
@@ -112,6 +126,17 @@ function changelanguage(){
 
 }
 changelanguage()
+
+*/
+
+//condition for changing languages
+async function languagetranslator(message,translateto){
+  translateto.engine ='libre'
+  const translatedstring = await translator(message,translateto)
+  console.log(translatedstring)
+  }
+  languagetranslator(response,'chichewa')
+
 
 
 
