@@ -65,19 +65,18 @@ firebase.initializeApp(firebaseConfig);
 var db = firebase.database();
 const ref = db.ref("weather/districts");
 
-var respons = `CON Welcome to Farm Radio Trust
-1. Register
-2. Main Menu
-3. Help
-4.change language`
 
 //condition for changing languages
 async function languagetranslator(message,translateto){
 translateto.engine ='libre'
-const translatedstring = await translator(message,translateto)
-console.log(translatedstring)
+const respons = await translator(message,translateto)
+console.log(respons)
 }
-languagetranslator(respons,'chichewa')
+languagetranslator(`CON Welcome to Farm Radio Trust
+1. Register
+2. Main Menu
+3. Help
+4.change language`,'chichewa')
 
 
 const port = process.env.PORT || 3030;
@@ -95,7 +94,7 @@ app.post("*", (req, res) => {
    //creating an array of data
    let dataarray=text.split('*');
    let name
-   let suname
+   let surname
    let language
 
    
@@ -145,7 +144,7 @@ async function languagetranslator(message,translateto){
   //first
   if (text == "") {
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~First request for the FRT main menu~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    response = `CON Welcome to Farm Radio Trust
+    respon = `CON Welcome to Farm Radio Trust
         1. Register
         2. Main Menu
         3. Help
@@ -154,10 +153,10 @@ async function languagetranslator(message,translateto){
   //condition for changing languages
       async function languagetranslator(message,translateto){
         translateto.engine ='libre'
-        const translatedstring = await translator(message,translateto)
+        response = await translator(message,translateto)
         console.log(translatedstring)
     }
-    languagetranslator(response,'chichewa')
+    languagetranslator(respon,'chichewa')
          
   }
   //seconds
