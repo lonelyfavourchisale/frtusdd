@@ -68,9 +68,11 @@ const ref = db.ref("weather/districts");
 
 //condition for changing languages
 async function languagetranslator(message,translateto){
+  var NNNN
 translateto.engine ='libre'
 const respons = await translator(message,translateto)
-console.log(respons)
+NNNN=`${respons}`
+console.log(NNNN)
 }
 languagetranslator(`CON Welcome to Farm Radio Trust
 1. Register
@@ -144,19 +146,16 @@ async function languagetranslator(message,translateto){
   //first
   if (text == "") {
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~First request for the FRT main menu~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    respon = `CON Welcome to Farm Radio Trust
-        1. Register
-        2. Main Menu
-        3. Help
-        4.change language`
+  
         
   //condition for changing languages
       async function languagetranslator(message,translateto){
         translateto.engine ='libre'
-        response = await translator(message,translateto)
+        var translatedstring = await translator(message,translateto)
         console.log(translatedstring)
+        response = `CON  ${translatedstring}`
     }
-    languagetranslator(`CON Welcome to Farm Radio Trust
+    languagetranslator(` Welcome to Farm Radio Trust
     1. Register
     2. Main Menu
     3. Help
