@@ -103,11 +103,12 @@ app.post("*", (req, res) => {
     translateto.engine ='libre'
     const translatedstring = await translator(message,translateto)
     var res =`CON ${translatedstring}`
-     response = `CON ${responses}`
+     
     console.log(response)
   
 }
 languagetranslator(responses,'chichewa')
+response = `CON ${responses}`
             
   }
   //seconds
