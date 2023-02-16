@@ -118,7 +118,7 @@ app.post("*", (req, res) => {
     translateto.engine ='libre'
     const translatedstring = await translator(message,translateto)
     var res =`CON ${translatedstring}`
-     response = await responses
+     response = await res
     console.log(response)
   
 }
