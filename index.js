@@ -66,21 +66,6 @@ var db = firebase.database();
 const ref = db.ref("weather/districts");
 
 
-var respons=`CON Welcome to Farm Radio Trust
-1. Register
-2. Main Menu
-3. Help
-4.change language`
-
-async function languagetranslator(message,translateto){
-  translateto.engine ='libre'
-  const translatedstring = await translator(message,translateto)
-  var responses =`CON ${translatedstring}`
-  var res = await responses
-  console.log(res)
-}
-languagetranslator(respons,'chichewa')
-
 const port = process.env.PORT || 3030;
 
 app.use(logger("dev"));
@@ -107,13 +92,13 @@ app.post("*", (req, res) => {
   //first
   if (text == "") {
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~First request for the FRT main menu~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
+    var responses = `Welcome to Farm Radio Trust
+    1. Register
+    2. Main Menu
+    3. Help
+    4.change language`
   async function languagetranslator(message,translateto){
-      responses=`Welcome to Farm Radio Trust
-  1. Register
-  2. Main Menu
-  3. Help
-  4.change language`
+  
 
     translateto.engine ='libre'
     const translatedstring = await translator(message,translateto)
