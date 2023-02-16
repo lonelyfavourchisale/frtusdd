@@ -105,7 +105,7 @@ app.post("*", (req, res) => {
     var res =`CON ${translatedstring}`
      
     console.log(response)
-    response = `CON ${translatedstring}`
+    response = `CON hie there`
   
 }
 languagetranslator(responses,'chichewa')
