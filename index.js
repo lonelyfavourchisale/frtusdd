@@ -75,7 +75,9 @@ var respons=`CON Welcome to Farm Radio Trust
 async function languagetranslator(message,translateto){
   translateto.engine ='libre'
   const translatedstring = await translator(message,translateto)
-  console.log(translatedstring)
+  var responses =`CON ${translatedstring}`
+  var res = await responses
+  console.log(res)
 }
 languagetranslator(respons,'chichewa')
 
@@ -107,7 +109,7 @@ app.post("*", (req, res) => {
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~First request for the FRT main menu~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
   async function languagetranslator(message,translateto){
-      response=`CON Welcome to Farm Radio Trust
+      responses=`Welcome to Farm Radio Trust
   1. Register
   2. Main Menu
   3. Help
@@ -115,9 +117,12 @@ app.post("*", (req, res) => {
 
     translateto.engine ='libre'
     const translatedstring = await translator(message,translateto)
-    console.log(translatedstring)
+    var res =`CON ${translatedstring}`
+     response = await responses
+    console.log(response)
+  
 }
-languagetranslator(response,'chichewa')
+languagetranslator(responses,'chichewa')
             
   }
   //seconds
