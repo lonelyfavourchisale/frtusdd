@@ -105,10 +105,11 @@ app.post("*", (req, res) => {
     var res =`CON ${translatedstring}`
      
     console.log(response)
+    response = `CON ${translatedstring}`
   
 }
 languagetranslator(responses,'chichewa')
-response = `CON ${responses}`
+
             
   }
   //seconds
