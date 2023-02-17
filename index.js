@@ -94,7 +94,7 @@ app.post("*", (req, res) => {
       translateto.engine ='libre'
       const translatedstring = await translator(message,translateto)
       console.log(translatedstring)
-      response = `CON  ${translatedstring}`
+      response = `CON  hie`
   }
   languagetranslator('Welcome to Farm Radio Trust \n 1. Register \n 2. Main Menu \n 3. Help \n 4.change language','chichewa')
             
