@@ -52,18 +52,15 @@ const newregref = regdb.ref("users" )
 
     
 
-    
-    
-    
-
-var getdistrictname = "lonely chisalel";
-console.log(`${getdistrictname}`)
 //inintilizing the app
 firebase.initializeApp(firebaseConfig);
 
 //getting database
 var db = firebase.database();
 const ref = db.ref("weather/districts");
+
+
+
 
 
 const port = process.env.PORT || 3030;
@@ -92,23 +89,12 @@ app.post("*", (req, res) => {
   //first
   if (text == "") {
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~First request for the FRT main menu~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    var responses = `Welcome to Farm Radio Trust
+    response = `CON Welcome to Farm Radio Trust
     1. Register
     2. Main Menu
     3. Help
     4.change language`
-  async function languagetranslator(message,translateto){
-  
-
-    translateto.engine ='libre'
-    const translatedstring = await translator(message,translateto)
-    var res =`CON ${translatedstring}`
-     
-    console.log(response)
-    response = `CON hie there`
-  
-}
-languagetranslator(responses,'chichewa')
+ 
 
             
   }
