@@ -89,13 +89,14 @@ app.post("*", (req, res) => {
   //first
   if (text == "") {
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~First request for the FRT main menu~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    response = `CON Welcome to Farm Radio Trust
-    1. Register
-    2. Main Menu
-    3. Help
-    4.change language`
- 
-
+    
+    async function languagetranslator(message,translateto){
+      translateto.engine ='libre'
+      const translatedstring = await translator(message,translateto)
+      console.log(translatedstring)
+      response = `CON  ${translatedstring}`
+  }
+  languagetranslator('Welcome to Farm Radio Trust \n 1. Register \n 2. Main Menu \n 3. Help \n 4.change language','chichewa')
             
   }
   //seconds
