@@ -102,24 +102,17 @@ app.post("*", (req, res) => {
    //array length
    let dataarraysize=dataarray.length
   //first
-  function languageselector(){
+
   newregref.child(phonenumber).on('value',(snapshot)=>{
-    if (snapshot.val().translated_languge='english') {
-      function englishapp(){
-       if (text=='') {
-        response=`CON Welcome to Farm Radio Trust
-        1.Register
-        2.Main Menu
-        3.Help
-        4.change language`
-        
-       }
-      }
-      englishapp()
+    if (text=='' && (snapshot.val().translated_languge)=='english') {
+      response=`CON Welcome to Farm Radio Trust
+      1.Register
+      2.Main Menu
+      3.Help
+      4.ch
+    ange language`
     }
   })
-}
-languageselector()
   //seconds
   if (text == "1") {
     response = `CON Welcome to Mlimi Registration services. 
