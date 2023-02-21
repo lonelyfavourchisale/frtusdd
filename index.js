@@ -102,7 +102,7 @@ app.post("*", (req, res) => {
    //array length
    let dataarraysize=dataarray.length
   //first
-  function language(){
+  function languageselector(){
   newregref.child(phonenumber).on('value',(snapshot)=>{
     if (snapshot.val().translated_languge='english') {
       function englishapp(){
@@ -119,6 +119,7 @@ app.post("*", (req, res) => {
     }
   })
 }
+languageselector()
   //seconds
   if (text == "1") {
     response = `CON Welcome to Mlimi Registration services. 
