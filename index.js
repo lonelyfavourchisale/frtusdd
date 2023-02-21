@@ -52,6 +52,21 @@ const newregref = regdb.ref("users" )
 
     
 
+newregref.child('+265995536312').on('value',(snapshot)=>{
+  if (snapshot.val().translated_languge='english') {
+    function englishapp(){
+      personname='lonely'
+      if(personname='lonely'){
+        console.log('her name is lonely')
+      }
+      else{
+        console.log('her name is not lonely')
+      }
+    }
+    englishapp()
+  }
+})
+
 //inintilizing the app
 firebase.initializeApp(firebaseConfig);
 
@@ -99,8 +114,24 @@ app.post("*", (req, res) => {
   languagetranslator('Welcome to Farm Radio Trust \n 1. Register \n 2. Main Menu \n 3. Help \n 4.change language','chichewa')
             
   }
+
+  newregref.child(phonenumber).on('value',(snapshot)=>{
+    if (snapshot.val().translated_languge='english') {
+      function englishapp(){
+       if (text=='') {
+        response=`CON Welcome to Farm Radio Trust
+        1.Register
+        2.Main Menu
+        3.Help
+        4.change language`
+        
+       }
+      }
+      englishapp()
+    }
+  })
   //seconds
-  else if (text == "1") {
+  if (text == "1") {
     response = `CON Welcome to Mlimi Registration services. 
         
         1. Start Registration
