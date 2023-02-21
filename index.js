@@ -102,19 +102,7 @@ app.post("*", (req, res) => {
    //array length
    let dataarraysize=dataarray.length
   //first
-  if (text == "") {
-    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~First request for the FRT main menu~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    
-    async function languagetranslator(message,translateto){
-      translateto.engine ='libre'
-      const translatedstring = await translator(message,translateto)
-      console.log(translatedstring)
-      response = `CON  hie`
-  }
-  languagetranslator('Welcome to Farm Radio Trust \n 1. Register \n 2. Main Menu \n 3. Help \n 4.change language','chichewa')
-            
-  }
-
+  function language(){
   newregref.child(phonenumber).on('value',(snapshot)=>{
     if (snapshot.val().translated_languge='english') {
       function englishapp(){
@@ -130,6 +118,7 @@ app.post("*", (req, res) => {
       englishapp()
     }
   })
+}
   //seconds
   if (text == "1") {
     response = `CON Welcome to Mlimi Registration services. 
