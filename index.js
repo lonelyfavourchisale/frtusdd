@@ -51,22 +51,12 @@ const regref = regdb.ref("sectors")
 const newregref = regdb.ref("users" )
 
     
-
+let languageglobalvariable
 newregref.child('+265995536312').on('value',(snapshot)=>{
-  if (snapshot.val().translated_languge='english') {
-    function englishapp(){
-      personname='lonely'
-      if(personname='lonely'){
-        console.log('her name is lonely')
-      }
-      else{
-        console.log('her name is not lonely')
-      }
-    }
-    englishapp()
-  }
-})
-
+ languageglobalvariable=snapshot.val().translated_languge
+ 
+  })
+  console.log(languageglobalvariable)
 //inintilizing the app
 firebase.initializeApp(firebaseConfig);
 
@@ -103,16 +93,17 @@ app.post("*", (req, res) => {
    let dataarraysize=dataarray.length
   //first
 
-  newregref.child(phonenumber).on('value',(snapshot)=>{
-    if (text=='' && (snapshot.val().translated_languge)=='english') {
-      response=`CON Welcome to Farm Radio Trust
+  newregref.child(phonenumber).once('value').then(snapshot => {
+    const translatedLanguage = snapshot?.val()?.translated_language;
+    if (text === '' && translatedLanguage === 'english') {
+      response = `CON Welcome to Farm Radio Trust
       1.Register
       2.Main Menu
       3.Help
-      4.ch
-    ange language`
+      4.Change language`
     }
-  })
+  });
+  
   //seconds
   if (text == "1") {
     response = `CON Welcome to Mlimi Registration services. 
