@@ -101,9 +101,18 @@ app.post("*", (req, res) => {
       2.Main Menu
       3.Help
       4.Change language`
+    } else {
+      response = `END Error: Could not retrieve user data`
+      console.error(`Error: Could not retrieve user data for phone number ${phonenumber}`)
     }
+    console.log(`Response: ${response}`)
+  }).catch(error => {
+    response = `END Error: ${error.message}`
+    console.error(`Error: ${error.message}`)
+    console.log(`Response: ${response}`)
   });
   
+  /*
   //seconds
   if (text == "1") {
     response = `CON Welcome to Mlimi Registration services. 
@@ -405,7 +414,7 @@ response=`CON Choose your preffered language
   }
   
 
-  
+*/  
   //send the response back
   res.set("Content-Type: text/plain");
    res.send(response);
