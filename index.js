@@ -100,9 +100,17 @@ app.post("*", (req, res) => {
       2.Main Menu
       3.Help
       4.Change language`
+    }
+    else{
+      response=`CON invalid input.please select a valid input
+      1.Register
+      2.Main Menu
+      3.Help
+      4.Change language`
     } 
 
-  else if (text == "1") {
+ /*
+    else if (text == "1") {
     response = `CON Welcome to Mlimi Registration services. 
         
         1. Start Registration
@@ -401,10 +409,8 @@ response=`CON Choose your preffered language
     response =`END you have successfully switched to chichewa languge`
   }
   
+*/
 
-else{
-  response=`CON invalid input.please enter a valid input`
-}
   //send the response back
   res.set("Content-Type: text/plain");
    res.send(response);
