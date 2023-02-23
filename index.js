@@ -93,28 +93,16 @@ app.post("*", (req, res) => {
    let dataarraysize=dataarray.length
   //first
 
-  newregref.child(phonenumber).once('value').then(snapshot => {
-    const translatedLanguage = snapshot?.val()?.translated_language;
-    if (text === '' && translatedLanguage === 'english') {
+ 
+    if (text === '') {
       response = `CON Welcome to Farm Radio Trust
       1.Register
       2.Main Menu
       3.Help
       4.Change language`
-    } else {
-      response = `END Error: Could not retrieve user data`
-      console.error(`Error: Could not retrieve user data for phone number ${phonenumber}`)
-    }
-    console.log(`Response: ${response}`)
-  }).catch(error => {
-    response = `END Error: ${error.message}`
-    console.error(`Error: ${error.message}`)
-    console.log(`Response: ${response}`)
-  });
-  
-  /*
-  //seconds
-  if (text == "1") {
+    } 
+
+  else if (text == "1") {
     response = `CON Welcome to Mlimi Registration services. 
         
         1. Start Registration
@@ -414,7 +402,9 @@ response=`CON Choose your preffered language
   }
   
 
-*/  
+else{
+  response=`CON invalid input.please enter a valid input`
+}
   //send the response back
   res.set("Content-Type: text/plain");
    res.send(response);
