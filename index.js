@@ -102,12 +102,14 @@ app.post("*", (req, res) => {
       4.Change language`
     }
     else{
-      response=`CON invalid input.please select a valid input
+      response = `CON Welcome to Farm Radio Trust
       1.Register
       2.Main Menu
       3.Help
       4.Change language`
     } 
+
+    
 
  /*
     else if (text == "1") {
