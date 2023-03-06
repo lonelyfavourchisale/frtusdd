@@ -179,7 +179,7 @@ else if(dataarray[3]!='' && dataarraysize==4 && dataarray[0]=='1'){
   
   //working on weather menu
   else if (text == "2*2") {
-    response = `CON please  wait..data is being processed`
+    response = `END please  wait..data is being processed`
      async function disp() {
       await promise();
     }
