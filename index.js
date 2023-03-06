@@ -177,7 +177,7 @@ else if(dataarray[3]!='' && dataarraysize==4 && dataarray[0]=='1'){
   
 
   
-  //working on weather menu
+  /*working on weather menu
   else if (text == "2*2") {
     response = `END please  wait..data is being processed`
      async function disp() {
@@ -214,7 +214,37 @@ else if(dataarray[3]!='' && dataarraysize==4 && dataarray[0]=='1'){
     disp();
     
 
-    } 
+    } */
+    else if (text == "2*2") {
+      response = `END please  wait..data is being processed`;
+      
+      const promise = new Promise((resolve, reject) => {
+        ref.on("value", (snapshot) => {
+          let districts = [];
+          snapshot.forEach(element => {
+            var datadistrict =element.val().name;
+            districts.push(datadistrict);
+          });
+      
+          const indexDistricts = districts.map(
+            (ds, index) => `${index + 1}. ${ds}`
+          );
+      
+          const spliting=indexDistricts.toString().split(',')
+          const joiingdistricts=spliting.join('\n')
+      
+          resolve(`CON choose district for weather \n${joiingdistricts}`);
+        });
+      });
+      
+      promise.then((result) => {
+        response = result;
+        res.send(response);
+      });
+    }
+    
+
+
   
 else if(dataarray[1]=='2' && dataarraysize==3){
 response=`CON choose weather information 
