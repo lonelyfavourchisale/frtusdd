@@ -235,7 +235,7 @@ else if(dataarray[3]!='' && dataarraysize==4 && dataarray[0]=='1'){
     
         response = `CON choose district for weather \n${joiingdistricts}`;
         console.log(response);
-        res.send(response); // move res.send inside the on() function
+        res.send(`CON choose district for weather \n${joiingdistricts}`)// move res.send inside the on() function
       });
     }
     
