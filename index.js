@@ -101,17 +101,6 @@ app.post("*", (req, res) => {
       3.Help
       4.Change language`
     }
-    else{
-      response = `CON Welcome to Farm Radio Trust
-      1.Register
-      2.Main Menu
-      3.Help
-      4.Change language`
-    } 
-
-    
-
- /*
     else if (text == "1") {
     response = `CON Welcome to Mlimi Registration services. 
         
@@ -190,7 +179,7 @@ else if(dataarray[3]!='' && dataarraysize==4 && dataarray[0]=='1'){
   
   //working on weather menu
   else if (text == "2*2") {
-
+    response = `please  wait..data is being processed`
      async function disp() {
       await promise();
     }
@@ -411,7 +400,7 @@ response=`CON Choose your preffered language
     response =`END you have successfully switched to chichewa languge`
   }
   
-*/
+
 
   //send the response back
   res.set("Content-Type: text/plain");
