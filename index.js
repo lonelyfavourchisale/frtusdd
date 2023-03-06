@@ -215,36 +215,32 @@ else if(dataarray[3]!='' && dataarraysize==4 && dataarray[0]=='1'){
     
 
     } */
+
     else if (text == "2*2") {
-      response = `END please  wait..data is being processed`;
+      response = `END please wait..data is being processed`;
       
-      const promise = new Promise((resolve, reject) => {
-        ref.on("value", (snapshot) => {
-          let districts = [];
-          snapshot.forEach(element => {
-            var datadistrict =element.val().name;
-            districts.push(datadistrict);
-          });
-      
-          const indexDistricts = districts.map(
-            (ds, index) => `${index + 1}. ${ds}`
-          );
-      
-          const spliting=indexDistricts.toString().split(',')
-          const joiingdistricts=spliting.join('\n')
-      
-          resolve(`CON choose district for weather \n${joiingdistricts}`);
+      ref.on("value", (snapshot) => {
+        let districts = [];
+        snapshot.forEach(element => {
+          var datadistrict = element.val().name;
+          districts.push(datadistrict);
         });
-      });
-      
-      promise.then((result) => {
-        response = result;
-        res.send(response);
+    
+        const indexDistricts = districts.map(
+          (ds, index) => `${index + 1}. ${ds}`
+        );
+    
+        const spliting = indexDistricts.toString().split(',');
+        const joiingdistricts = spliting.join('\n');
+    
+        response = `CON choose district for weather \n${joiingdistricts}`;
+        console.log(response);
+        res.send(response); // move res.send inside the on() function
       });
     }
     
 
-
+    
   
 else if(dataarray[1]=='2' && dataarraysize==3){
 response=`CON choose weather information 
